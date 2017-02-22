@@ -72,7 +72,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void Kiss()
         {
-
+            CombatController.Instance.Kiss();
         }
     }
 }

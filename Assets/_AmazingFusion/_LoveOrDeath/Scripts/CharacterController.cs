@@ -59,6 +59,24 @@ namespace com.AmazingFusion.LoveOrDeath {
         public event System.Action OnLifeChange;
         public event System.Action OnEnergyChange;
 
+        public event System.Action OnAttack;
+        public event System.Action OnDefense;
+        public event System.Action OnUltimate;
+
+        public void attackEvent()
+        {
+            if (OnAttack != null) OnAttack();
+        }
+        public void defenseEvent()
+        {
+            if (OnDefense != null) OnDefense();
+        }
+        public void ultimateEvent()
+        {
+            if (OnUltimate != null) OnUltimate();
+        }
+
+
         public virtual void Initialize() {
             CurrentLife = _maxLife;
             CurrentEnergy = _initialEnergy;
