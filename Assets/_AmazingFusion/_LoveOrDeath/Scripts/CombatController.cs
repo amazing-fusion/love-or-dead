@@ -47,13 +47,13 @@ namespace com.AmazingFusion.LoveOrDeath {
 
         }
 
-        public void PlayAction(CharacterAction action) {
+        public void PlayAction(CharacterAction playerAction) {
             CharacterAction rivalAction = _rivalCharacter.GetAction();
 
-            if (action.ClashAction(rivalAction)) {
-
+            if (playerAction.ClashAction(rivalAction)) {
+                //TODO: Win playerAction
             } else {
-
+                //TODO: Win rivalAction
             }
         }
     }
