@@ -64,8 +64,17 @@ namespace com.AmazingFusion.LoveOrDeath {
             CurrentEnergy = _initialEnergy;
         }
 
-        //public bool CanPlayAction(Action action) {
+        public bool CanPlayAction(CharacterAction action) {
 
-        //}
+            if(_currentEnergy >= action.EnergyCost)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }
