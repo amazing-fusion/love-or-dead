@@ -11,6 +11,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         int _lovingLife;
 
+        int _currentPatterIndex;
+
         CharacterAction[] _pattern;
 
         List<CharacterAction> _actionsList = new List<CharacterAction>();
@@ -30,8 +32,8 @@ namespace com.AmazingFusion.LoveOrDeath {
             SetActionsList();
         }
 
-        public void GetAction() {
-
+        public CharacterAction GetAction() {
+            return null;
         }
     }
 }

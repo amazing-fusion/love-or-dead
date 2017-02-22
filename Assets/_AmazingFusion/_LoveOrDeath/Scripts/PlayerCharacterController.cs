@@ -42,22 +42,19 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public event System.Action OnUltimateChange;
 
-        public void PlayAction(CharacterAction action)
+        public bool PlayAction(CharacterAction action)
         {
             if (CanPlayAction(action))
             {
-                if (action.EnergyEarned > 0)
-                {
-                    CurrentEnergy = CurrentEnergy + action.EnergyEarned;
-                }
-                else
-                {
-                    CurrentEnergy = CurrentEnergy - action.EnergyCost;
-                }
+                CurrentEnergy = CurrentEnergy - action.EnergyCost;
+
+                CombatController.Instance.PlayAction(action);
+
+                return true;
             }
             else
             {
-
+                return false;
             }
         }
 

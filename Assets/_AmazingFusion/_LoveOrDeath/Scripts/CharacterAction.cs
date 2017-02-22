@@ -4,8 +4,16 @@ using UnityEngine;
 
 namespace com.AmazingFusion.LoveOrDeath
 {
-    public class CharacterAction : OptimizedBehaviour
-    {
+    public class CharacterAction : ScriptableObject {
+
+        public const string ACTIONS_PATH = "Actions/";
+
+        public enum ActionResult {
+            Win,
+            Lose,
+            Both
+        }
+
         [SerializeField]
         string _key;
 
@@ -26,6 +34,10 @@ namespace com.AmazingFusion.LoveOrDeath
             get
             {
                 return _key;
+            }
+            set
+            {
+                _key = value;
             }
         }
 
@@ -64,6 +76,10 @@ namespace com.AmazingFusion.LoveOrDeath
         public bool ClashAction(CharacterAction action)
         {
             return false;
+        }
+
+        public static CharacterAction[] LoadAll() {
+            return Resources.LoadAll<CharacterAction>(ACTIONS_PATH);
         }
     }
 }
