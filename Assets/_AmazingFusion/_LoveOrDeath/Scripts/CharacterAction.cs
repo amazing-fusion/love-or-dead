@@ -8,6 +8,13 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public const string ACTIONS_PATH = "Actions/";
 
+        public enum ActionType {
+            Energetic,
+            Offensive,
+            Defensive,
+            Ultimate
+        }
+
         public enum ActionResult {
             Win,
             Lose,
@@ -16,6 +23,9 @@ namespace com.AmazingFusion.LoveOrDeath
 
         [SerializeField]
         string _key;
+
+        [SerializeField]
+        ActionType _type;
 
         [SerializeField]
         int _requiredLevel;
@@ -38,6 +48,12 @@ namespace com.AmazingFusion.LoveOrDeath
             set
             {
                 _key = value;
+            }
+        }
+
+        public ActionType Type {
+            get {
+                return _type;
             }
         }
 
