@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace com.AmazingFusion {
-    public class ScaleEasingAnimation : EasingAnimation {
+    public class ScaleEasingAnimation : ValueEasingAnimation {
 
         protected override void EasingUpdate() {
             base.EasingUpdate();
