@@ -22,7 +22,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void OnDrop(PointerEventData eventData)
         {
-            if ( _slotDrag)
+            if (_slotDrag && PlayerActionView.cardBeingDragged != null)
             {
                 PlayerActionView.cardBeingDragged.transform.SetParent(transform.parent.GetChild(0),true);
                 PlayerActionView.cardBeingDragged.PlayAction();
