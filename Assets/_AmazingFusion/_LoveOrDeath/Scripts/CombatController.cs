@@ -123,6 +123,11 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             _playerCharacter.CurrentEnergy += playerAction.EnergyEarned;
             _rivalCharacter.CurrentEnergy += rivalAction.EnergyEarned;
+            
+            Debug.Log("Final Player Life " + _playerCharacter.CurrentLife);
+            Debug.Log("Final Player Energy " + _playerCharacter.CurrentEnergy);
+            Debug.Log("Final Rival Life " + _rivalCharacter.CurrentLife);
+            Debug.Log("Final Rival Energy " + _rivalCharacter.CurrentEnergy);
 
             if (OnCombatActionsResolved != null) OnCombatActionsResolved();
 

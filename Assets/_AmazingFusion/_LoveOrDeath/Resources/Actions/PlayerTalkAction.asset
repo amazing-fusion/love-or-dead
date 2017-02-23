@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: PlayerTalkAction
   _type: 0
+  _aiEnabled: 1
   _requiredLevel: 0
   _energyCost: 0
   _energyEarned: 1

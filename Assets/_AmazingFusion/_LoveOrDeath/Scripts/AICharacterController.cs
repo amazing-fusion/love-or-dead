@@ -40,7 +40,8 @@ namespace com.AmazingFusion.LoveOrDeath {
             
             foreach(CharacterAction action in CharacterAction.ActionList)
             {
-                if(LevelManager.Instance.CurrentLevel >= action.RequiredLevel)
+                if(LevelManager.Instance.CurrentLevel >= action.RequiredLevel &&
+                    action.AiEnabled)
                 {
                     _actionsList.Add(action);
                 }

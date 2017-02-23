@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: Ultimate
   _type: 3
+  _aiEnabled: 0
   _requiredLevel: 0
   _energyCost: 0
   _energyEarned: 0

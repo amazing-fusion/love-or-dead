@@ -43,7 +43,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (_canDrag)
+            if (_canDrag && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
                 _dragging = true;
                 cardBeingDragged = this;
@@ -62,7 +62,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (_dragging)
+            if (_dragging && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
                 Transform.position = Input.mousePosition;
             }
@@ -103,7 +103,7 @@ namespace com.AmazingFusion.LoveOrDeath
         {
             Transform.parent = startParent;
             _action.OnActionResolved += ActionResolved;
-            CombatController.Instance.PlayAction(Action);
+            CombatController.Instance.PlayerCharacter.PlayAction(Action);
         }
     }
 }

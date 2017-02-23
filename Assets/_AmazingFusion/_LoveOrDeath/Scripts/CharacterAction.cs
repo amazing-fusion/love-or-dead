@@ -31,6 +31,9 @@ namespace com.AmazingFusion.LoveOrDeath
         ActionType _type;
 
         [SerializeField]
+        bool _aiEnabled;
+
+        [SerializeField]
         int _requiredLevel;
 
         [SerializeField]
@@ -101,6 +104,14 @@ namespace com.AmazingFusion.LoveOrDeath
                     _actionList = LoadAll();
                 }
                 return _actionList;
+            }
+        }
+
+        public bool AiEnabled
+        {
+            get
+            {
+                return _aiEnabled;
             }
         }
 
