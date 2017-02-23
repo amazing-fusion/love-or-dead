@@ -16,18 +16,20 @@ namespace com.AmazingFusion.LoveOrDeath
         Transform startParent;
 
         MoveToEasingAnimation _moveAnimation;
+        ScaleEasingAnimation _scaleAnimation;
 
-        public MoveToEasingAnimation MoveAnimation
-        {
-            get
-            {
-                return _moveAnimation;
-            }
-        }
+        /** public MoveToEasingAnimation MoveAnimation
+         {
+             get
+             {
+                 return _moveAnimation;
+             }
+         }*/
 
         void Awake()
         {
             _moveAnimation = GetComponent<MoveToEasingAnimation>();
+            _scaleAnimation = GetComponent<ScaleEasingAnimation>();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -36,6 +38,10 @@ namespace com.AmazingFusion.LoveOrDeath
             startPosition = Transform.localPosition;
             startParent = Transform.parent;
             GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+            _scaleAnimation.SetStartValue(1);
+            _scaleAnimation.SetChangeValue(0.5);
+            _scaleAnimation.Play();
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -50,9 +56,9 @@ namespace com.AmazingFusion.LoveOrDeath
             cardBeingDragged = null;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-            MoveAnimation.SetStartPositionAsCurrentLocalPosition();
-            MoveAnimation.SetEndPosition(startPosition);
-            MoveAnimation.Play();
+            _moveAnimation.SetStartPositionAsCurrentLocalPosition();
+            _moveAnimation.SetEndPosition(startPosition);
+            _moveAnimation.Play();
         }
     }
 }

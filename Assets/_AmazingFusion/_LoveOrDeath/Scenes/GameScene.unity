@@ -350,6 +350,16 @@ RectTransform:
   m_AnchoredPosition: {x: -0.50006104, y: -0.079956055}
   m_SizeDelta: {x: 0, y: 0.15997314}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &497826761 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1633013074154170, guid: fe191df508feb174fba940b937f980f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 784521279}
+--- !u!1 &689492316 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1633013074154170, guid: fe191df508feb174fba940b937f980f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1880830350}
 --- !u!1001 &784521279
 Prefab:
   m_ObjectHideFlags: 0
@@ -868,6 +878,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224415467875775086, guid: fe191df508feb174fba940b937f980f9,
     type: 2}
   m_PrefabInternal: {fileID: 1633871521}
+--- !u!1 &1244440757 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1633013074154170, guid: fe191df508feb174fba940b937f980f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600634826}
 --- !u!1 &1415172685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1766,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114371555940167186, guid: fe191df508feb174fba940b937f980f9,
+        type: 2}
+      propertyPath: _duration
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe191df508feb174fba940b937f980f9, type: 2}
   m_IsPrefabParent: 0
@@ -1893,7 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClearID: 0
-  IDs: 1e0000002000000021000000220000002300000027000000280000002c00000041000000420000004300000045000000530000005a0000005b0000005d000000
+  IDs: 1e0000002000000021000000220000002300000027000000280000002c00000041000000420000004300000045000000530000005a0000005b0000005d0000005f000000690000006a000000
   OBJs:
   - {fileID: 1668103136}
   - {fileID: 409995736}
@@ -1911,6 +1931,9 @@ MonoBehaviour:
   - {fileID: 1689935059}
   - {fileID: 1417494002}
   - {fileID: 278821436}
+  - {fileID: 1244440757}
+  - {fileID: 497826761}
+  - {fileID: 689492316}
 --- !u!4 &2034843490
 Transform:
   m_ObjectHideFlags: 1

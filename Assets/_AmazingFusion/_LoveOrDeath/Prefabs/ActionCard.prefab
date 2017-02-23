@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114144558416005042}
   - component: {fileID: 225005725403206184}
   - component: {fileID: 114385006664607914}
+  - component: {fileID: 114371555940167186}
   m_Layer: 5
   m_Name: ActionCard
   m_TagString: Untagged
@@ -43,6 +44,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _action: {fileID: 0}
+--- !u!114 &114371555940167186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633013074154170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3b1fd38a131c84cbae158dfbb885a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _easingInfo:
+    _startValue: 0
+    _changeValue: 0
+    _curve: 0
+  _duration: 0.2
 --- !u!114 &114385006664607914
 MonoBehaviour:
   m_ObjectHideFlags: 1

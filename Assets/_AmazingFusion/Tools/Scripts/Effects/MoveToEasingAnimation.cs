@@ -4,26 +4,7 @@ using UnityEngine;
 using MovementEffects;
 
 namespace com.AmazingFusion {
-    public class MoveToEasingAnimation : OptimizedBehaviour, IEffectable {
-
-        [SerializeField]
-        EasingInfo _xEasingInfo;
-
-        [SerializeField]
-        EasingInfo _yEasingInfo;
-
-        [SerializeField]
-        EasingInfo _zEasingInfo;
-
-        [SerializeField]
-        double _duration;
-
-        double _starTime;
-        double _currentTime;
-
-        public event Action<MoveToEasingAnimation> OnStart;
-        public event Action<MoveToEasingAnimation> OnUpdate;
-        public event Action<IEffectable> OnEnd;
+    public class MoveToEasingAnimation : Vector3EasingAnimation {
 
         public void SetStartPosition(Vector3 startPosition) {
             _xEasingInfo.StartValue = startPosition.x;
@@ -32,7 +13,7 @@ namespace com.AmazingFusion {
         }
 
         public void SetStartPositionAsCurrentLocalPosition() {
-            SetStartPosition(transform.localPosition);
+            SetStartPosition(Transform.localPosition);
         }
 
         public void SetChangePosition(Vector3 changePosition) {
@@ -48,54 +29,15 @@ namespace com.AmazingFusion {
         }
 
         public void SetEndPositionAsCurrentLocalPosition() {
-            SetEndPosition(transform.localPosition);
+            SetEndPosition(Transform.localPosition);
         }
 
-        public void Play() {
-            _starTime = Time.time;
-            Timing.RunCoroutine(DoEasing());
-        }
-
-        protected virtual IEnumerator<float> DoEasing() {
-            if (OnStart != null) OnStart(this);
-
-            double endTime = _starTime + _duration;
-            while (Time.time < endTime) {
-                _currentTime = Time.time - _starTime;
-                if (_xEasingInfo.ChangeValue != 0) {
-                    _xEasingInfo.Update(_currentTime, _duration);
-                }
-                if (_yEasingInfo.ChangeValue != 0) {
-                    _yEasingInfo.Update(_currentTime, _duration);
-                }
-                if (_zEasingInfo.ChangeValue != 0) {
-                    _zEasingInfo.Update(_currentTime, _duration);
-                }
-                Transform.localPosition = new Vector3(
-                        (float)_xEasingInfo.CurrentValue,
-                        (float)_yEasingInfo.CurrentValue,
-                        (float)_zEasingInfo.CurrentValue);
-
-                if (OnUpdate != null) OnUpdate(this);
-                yield return 0;
-            }
-            if (_xEasingInfo.ChangeValue != 0) {
-                _xEasingInfo.Update(_duration, _duration);
-            }
-            if (_yEasingInfo.ChangeValue != 0) {
-                _yEasingInfo.Update(_duration, _duration);
-            }
-            if (_zEasingInfo.ChangeValue != 0) {
-                _zEasingInfo.Update(_duration, _duration);
-            }
+        protected override void EasingUpdate() {
+            base.EasingUpdate();
             Transform.localPosition = new Vector3(
                         (float)_xEasingInfo.CurrentValue,
                         (float)_yEasingInfo.CurrentValue,
                         (float)_zEasingInfo.CurrentValue);
-
-            if (OnUpdate != null) OnUpdate(this);
-
-            if (OnEnd != null) OnEnd(this);
         }
     }
 }

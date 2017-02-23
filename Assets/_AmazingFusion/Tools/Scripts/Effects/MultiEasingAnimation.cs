@@ -31,19 +31,26 @@ namespace com.AmazingFusion {
             double endTime = _starTime + _duration;
             while (Time.time < endTime) {
                 _currentTime = Time.time - _starTime;
-                foreach (EasingInfo easingInfo in _easingInfo) {
-                    easingInfo.Update(_currentTime, _duration);
-                }
+
+                EasingUpdate();
 
                 if (OnUpdate != null) OnUpdate(this);
                 yield return 0;
             }
-            foreach (EasingInfo easingInfo in _easingInfo) {
-                easingInfo.Update(_currentTime, _duration);
-            }
+            EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
             if (OnEnd != null) OnEnd(this);
+        }
+
+        public virtual void EasingUpdate() {
+            for (int i = 0; i < _easingInfo.Length; ++i) {
+                EasingUpdate(i);
+            }
+        }
+
+        public virtual void EasingUpdate(int easingInfoIndex) {
+            _easingInfo[easingInfoIndex].Update(_currentTime, _duration);
         }
     }
 }
