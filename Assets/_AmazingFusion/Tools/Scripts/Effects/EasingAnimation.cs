@@ -31,15 +31,20 @@ namespace com.AmazingFusion {
             double endTime = _starTime + _duration;
             while (Time.time < endTime) {
                 _currentTime = Time.time - _starTime;
-                _easingInfo.Update(_currentTime, _duration);
-
+                EasingUpdate();
                 if (OnUpdate != null) OnUpdate(this);
+
                 yield return 0;
             }
             _easingInfo.Update(_duration, _duration);
+            EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
             if (OnEnd != null) OnEnd(this);
+        }
+
+        public virtual void EasingUpdate() {
+            _easingInfo.Update(_currentTime, _duration);
         }
     }
 }

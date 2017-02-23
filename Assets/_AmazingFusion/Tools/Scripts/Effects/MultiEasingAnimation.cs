@@ -4,7 +4,7 @@ using UnityEngine;
 using MovementEffects;
 
 namespace com.AmazingFusion {
-    public class MultiEasingAnimation : OptimizedBehaviour, IEffectable {
+    public abstract class MultiEasingAnimation : OptimizedBehaviour, IEffectable {
 
         [SerializeField]
         EasingInfo[] _easingInfo;
@@ -31,19 +31,22 @@ namespace com.AmazingFusion {
             double endTime = _starTime + _duration;
             while (Time.time < endTime) {
                 _currentTime = Time.time - _starTime;
-                foreach (EasingInfo easingInfo in _easingInfo) {
-                    easingInfo.Update(_currentTime, _duration);
-                }
+
+                EasingUpdate();
 
                 if (OnUpdate != null) OnUpdate(this);
                 yield return 0;
             }
-            foreach (EasingInfo easingInfo in _easingInfo) {
-                easingInfo.Update(_currentTime, _duration);
-            }
+            EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
             if (OnEnd != null) OnEnd(this);
+        }
+
+        public virtual void EasingUpdate() {
+            foreach (EasingInfo easingInfo in _easingInfo) {
+                easingInfo.Update(_currentTime, _duration);
+            }
         }
     }
 }
