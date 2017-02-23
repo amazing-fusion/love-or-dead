@@ -63,6 +63,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         public event System.Action OnDefense;
         public event System.Action OnUltimate;
 
+        public event System.Action<CharacterAction> OnActionPicked;
+
         public void AttackEvent()
         {
             if (OnAttack != null) OnAttack();
@@ -71,7 +73,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         {
             if (OnDefense != null) OnDefense();
         }
-        public void ultimateEvent()
+        public void UltimateEvent()
         {
             if (OnUltimate != null) OnUltimate();
         }
@@ -93,6 +95,10 @@ namespace com.AmazingFusion.LoveOrDeath {
                 return false;
             }
 
+        }
+
+        public void PickAction(CharacterAction action) {
+            if (OnActionPicked != null) OnActionPicked(action);
         }
     }
 }

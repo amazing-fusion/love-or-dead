@@ -95,6 +95,8 @@ namespace com.AmazingFusion.LoveOrDeath {
                 Debug.LogError("[AICharacterController] No existe ninguna accion con coste de energia menor a " + CurrentEnergy.ToString());
             }
 #endif
+            PickAction(action);
+
             return action;
         }
     }

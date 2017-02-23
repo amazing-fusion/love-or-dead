@@ -4,7 +4,7 @@ using UnityEngine;
 using MovementEffects;
 
 namespace com.AmazingFusion {
-    public class Vector3EasingAnimation : OptimizedBehaviour, IEffectable {
+    public class Vector3EasingAnimation : EasingAnimation {
 
         [SerializeField]
         protected EasingInfo _xEasingInfo;
@@ -15,22 +15,11 @@ namespace com.AmazingFusion {
         [SerializeField]
         protected EasingInfo _zEasingInfo;
 
-        [SerializeField]
-        protected double _duration;
+        public override event Action<IEffectable> OnStart;
+        public override event Action<IEffectable> OnUpdate;
+        public override event Action<IEffectable> OnEnd;
 
-        protected double _starTime;
-        protected double _currentTime;
-
-        public event Action<Vector3EasingAnimation> OnStart;
-        public event Action<Vector3EasingAnimation> OnUpdate;
-        public event Action<IEffectable> OnEnd;
-
-        public void Play() {
-            _starTime = Time.time;
-            Timing.RunCoroutine(DoEasing());
-        }
-
-        protected virtual IEnumerator<float> DoEasing() {
+        protected override IEnumerator<float> DoEasing() {
             if (OnStart != null) OnStart(this);
 
             double endTime = _starTime + _duration;
