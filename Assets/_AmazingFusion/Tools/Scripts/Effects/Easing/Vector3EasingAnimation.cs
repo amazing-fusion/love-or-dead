@@ -42,7 +42,7 @@ namespace com.AmazingFusion {
 
                 yield return 0;
             }
-
+            _currentTime = _duration;
             EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
@@ -51,13 +51,13 @@ namespace com.AmazingFusion {
 
         protected virtual void EasingUpdate() {
             if (_xEasingInfo.ChangeValue != 0) {
-                _xEasingInfo.Update(_duration, _duration);
+                _xEasingInfo.Update(_currentTime, _duration);
             }
             if (_yEasingInfo.ChangeValue != 0) {
-                _yEasingInfo.Update(_duration, _duration);
+                _yEasingInfo.Update(_currentTime, _duration);
             }
             if (_zEasingInfo.ChangeValue != 0) {
-                _zEasingInfo.Update(_duration, _duration);
+                _zEasingInfo.Update(_currentTime, _duration);
             }
         }
     }

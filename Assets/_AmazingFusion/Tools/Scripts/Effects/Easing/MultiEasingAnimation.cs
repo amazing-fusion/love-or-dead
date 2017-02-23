@@ -4,46 +4,55 @@ using UnityEngine;
 using MovementEffects;
 
 namespace com.AmazingFusion {
-    public class ValueEasingAnimation : OptimizedBehaviour, IEffectable {
+    public class MultiEasingAnimation : OptimizedBehaviour, IEffectable {
 
         [SerializeField]
-        protected EasingInfo _easingInfo;
+        EasingInfo[] _easingInfo;
 
         [SerializeField]
-        protected double _duration;
+        double _duration;
 
-        protected double _starTime;
-        protected double _currentTime;
+        double _starTime;
+        double _currentTime;
 
-        public event Action<ValueEasingAnimation> OnStart;
-        public event Action<ValueEasingAnimation> OnUpdate;
+        public event Action<MultiEasingAnimation> OnStart;
+        public event Action<MultiEasingAnimation> OnUpdate;
         public event Action<IEffectable> OnEnd;
+
 
         public void Play() {
             _starTime = Time.time;
             Timing.RunCoroutine(DoEasing());
         }
 
-        public virtual IEnumerator<float> DoEasing() {
+        protected virtual IEnumerator<float> DoEasing() {
             if (OnStart != null) OnStart(this);
 
             double endTime = _starTime + _duration;
             while (Time.time < endTime) {
                 _currentTime = Time.time - _starTime;
-                EasingUpdate();
-                if (OnUpdate != null) OnUpdate(this);
 
+                EasingUpdate();
+
+                if (OnUpdate != null) OnUpdate(this);
                 yield return 0;
             }
-            _easingInfo.Update(_duration, _duration);
+
+            _currentTime = _duration;
             EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
             if (OnEnd != null) OnEnd(this);
         }
 
-        protected virtual void EasingUpdate() {
-            _easingInfo.Update(_currentTime, _duration);
+        public virtual void EasingUpdate() {
+            for (int i = 0; i < _easingInfo.Length; ++i) {
+                EasingUpdate(i);
+            }
+        }
+
+        public virtual void EasingUpdate(int easingInfoIndex) {
+            _easingInfo[easingInfoIndex].Update(_currentTime, _duration);
         }
     }
 }
