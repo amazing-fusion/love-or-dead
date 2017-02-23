@@ -13,6 +13,10 @@ namespace com.AmazingFusion {
         public override event Action<IEffectable> OnUpdate;
         public override event Action<IEffectable> OnEnd;
 
+        public void SetStartValueAsCurrentValue() {
+            _easingInfo.StartValue = _easingInfo.CurrentValue;
+        }
+
         public void SetStartValue(double startValue) {
             _easingInfo.StartValue = startValue;
         }

@@ -97,6 +97,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         public void PickAction(CharacterAction action) {
+            CurrentEnergy = CurrentEnergy - action.EnergyCost;
             if (OnActionPicked != null) OnActionPicked(action);
         }
     }

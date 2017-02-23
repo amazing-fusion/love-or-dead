@@ -18,7 +18,7 @@ namespace com.AmazingFusion.LoveOrDeath
         MoveToEasingAnimation _moveAnimation;
         ScaleEasingAnimation _scaleAnimation;
 
-        bool _canDrag;
+        bool _canDrag = true;
         bool _dragging;
 
         public CharacterAction Action

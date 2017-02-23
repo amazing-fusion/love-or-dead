@@ -52,8 +52,6 @@ namespace com.AmazingFusion.LoveOrDeath
         {
             if (CanPlayAction(action))
             {
-                CurrentEnergy = CurrentEnergy - action.EnergyCost;
-
                 PickAction(action);
 
                 CombatController.Instance.PlayAction(action);

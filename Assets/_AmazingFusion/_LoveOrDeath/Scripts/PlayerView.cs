@@ -27,9 +27,13 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         void SetPlayerValues() {
+            _lifeAnimation.SetStartValueAsCurrentValue();
             _lifeAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentLife);
+
+            _energyAnimation.SetStartValueAsCurrentValue();
             _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentEnergy);
-            
+
+            _ultimateAnimation.SetStartValueAsCurrentValue();
             _ultimateAnimation.MaxValue = CombatController.Instance.PlayerCharacter.UltimateActivationSuccess;
             _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.UltimateCounter);
 

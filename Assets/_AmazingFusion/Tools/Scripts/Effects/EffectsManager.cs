@@ -5,7 +5,7 @@ using UnityEngine;
 namespace com.AmazingFusion {
     public class EffectsManager : Singleton<EffectsManager> {
 
-        Queue<IEffectable> _effectsQueue;
+        Queue<IEffectable> _effectsQueue = new Queue<IEffectable>();
         IEffectable _currentEffect = null;
 
         public void AddEffect(IEffectable effect) {
