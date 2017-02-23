@@ -15,8 +15,17 @@ namespace com.AmazingFusion.LoveOrDeath
         Vector3 startPosition;
         Transform startParent;
 
+        [SerializeField]
         MoveToEasingAnimation _moveAnimation;
+
+        [SerializeField]
         ScaleEasingAnimation _scaleAnimation;
+
+        [SerializeField]
+        EasingAnimation _hideWinAnimation;
+
+        [SerializeField]
+        EasingAnimation _hideLoseAnimation;
 
         bool _canDrag = true;
         bool _dragging;
@@ -39,14 +48,24 @@ namespace com.AmazingFusion.LoveOrDeath
 
         void Awake()
         {
-            _moveAnimation = GetComponent<MoveToEasingAnimation>();
-            _scaleAnimation = GetComponent<ScaleEasingAnimation>();
-
             CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => { _canDrag = false; };
             /*
              Evento de acabar todos lo eventos del flujo
              */
             PlayerView.Instance.OnValuesChanged += () => { _canDrag = true; };
+            CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => {
+                //action.OnActionResolved += HideResult;
+            };
+        }
+
+        public void HideResult(bool win) {
+            //_action.OnActionResolved -= HideResult;
+
+            if (win) {
+                EffectsManager.Instance.AddEffect(_hideWinAnimation);
+            } else {
+                EffectsManager.Instance.AddEffect(_hideLoseAnimation);
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -61,8 +80,8 @@ namespace com.AmazingFusion.LoveOrDeath
 
                 startParent.SetAsLastSibling();
 
-                _scaleAnimation.SetStartValue(1);
-                _scaleAnimation.SetChangeValue(0.5);
+                _scaleAnimation.SetStartValue(1f);
+                _scaleAnimation.SetEndValue(400f / 270f);
                 _scaleAnimation.Play();
             }
             

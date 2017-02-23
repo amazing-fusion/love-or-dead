@@ -56,6 +56,8 @@ namespace com.AmazingFusion.LoveOrDeath {
             }
         }
 
+        public event System.Action OnInitialized;
+
         public event System.Action OnLifeChange;
         public event System.Action OnEnergyChange;
 
@@ -82,6 +84,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         public virtual void Initialize() {
             CurrentLife = _maxLife;
             CurrentEnergy = _initialEnergy;
+
+            if (OnInitialized != null) OnInitialized();
         }
 
         public virtual bool CanPlayAction(CharacterAction action) {

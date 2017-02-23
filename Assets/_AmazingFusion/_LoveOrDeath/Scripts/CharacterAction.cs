@@ -45,6 +45,9 @@ namespace com.AmazingFusion.LoveOrDeath
         [SerializeField]
         int _damage;
 
+        [SerializeField]
+        Sprite _sprite;
+
         public string Key
         {
             get
@@ -112,6 +115,12 @@ namespace com.AmazingFusion.LoveOrDeath
             get
             {
                 return _aiEnabled;
+            }
+        }
+
+        public Sprite Sprite {
+            get {
+                return _sprite;
             }
         }
 

@@ -29,13 +29,21 @@ namespace com.AmazingFusion.LoveOrDeath {
             }
         }
 
-public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved;public PlayerCharacterController PlayerCharacter
+        public PlayerCharacterController PlayerCharacter
         {
             get
             {
                 return _playerCharacter;
             }
         }
+
+        public AICharacterController RivalCharacter {
+            get {
+                return _rivalCharacter;
+            }
+        }
+
+        public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved;
 
         void Start()
         {
@@ -116,6 +124,15 @@ public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved
                     _playerCharacter.CurrentLife -= rivalAction.Damage;
 
                     break;
+            }
+
+            if (playerAction.Type == CharacterAction.ActionType.Ultimate) {
+                _playerCharacter.UltimateCounter = 0;
+
+            } else if (playerAction.Type == CharacterAction.ActionType.Offensive && rivalAction.Type == CharacterAction.ActionType.Energetic ||
+                    playerAction.Type == CharacterAction.ActionType.Defensive && rivalAction.Type == CharacterAction.ActionType.Offensive) {
+
+                ++_playerCharacter.UltimateCounter;
             }
 
             _playerCharacter.CurrentEnergy += playerAction.EnergyEarned;
