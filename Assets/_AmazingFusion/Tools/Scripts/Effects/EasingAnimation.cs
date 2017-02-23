@@ -7,13 +7,13 @@ namespace com.AmazingFusion {
     public abstract class EasingAnimation : OptimizedBehaviour, IEffectable {
 
         [SerializeField]
-        EasingInfo _easingInfo;
+        protected EasingInfo _easingInfo;
 
         [SerializeField]
-        double _duration;
+        protected double _duration;
 
-        double _starTime;
-        double _currentTime;
+        protected double _starTime;
+        protected double _currentTime;
 
         public event Action<EasingAnimation> OnStart;
         public event Action<EasingAnimation> OnUpdate;
@@ -43,7 +43,7 @@ namespace com.AmazingFusion {
             if (OnEnd != null) OnEnd(this);
         }
 
-        public virtual void EasingUpdate() {
+        protected virtual void EasingUpdate() {
             _easingInfo.Update(_currentTime, _duration);
         }
     }
