@@ -104,7 +104,7 @@ namespace com.AmazingFusion.LoveOrDeath
             }
         }
 
-       /* public ActionResult ClashAction(CharacterAction action)
+        public ActionResult ClashAction(CharacterAction action)
         {
             ActionResult actionResult = ActionResult.None;
             
@@ -184,12 +184,19 @@ namespace com.AmazingFusion.LoveOrDeath
                     actionResult = ActionResult.Win;
                 }
             }
+
             return actionResult;
-        }*/
+        }
+
+        public void ActionResolved(bool win) {
+            if (OnActionResolved != null) OnActionResolved(win);
+        }
 
         public static CharacterAction[] LoadAll() {
             return Resources.LoadAll<CharacterAction>(ACTIONS_PATH);
         }
+
+        public event System.Action<bool> OnActionResolved;
     }
 }
 

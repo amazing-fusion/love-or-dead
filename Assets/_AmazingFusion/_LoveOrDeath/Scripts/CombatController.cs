@@ -25,6 +25,11 @@ namespace com.AmazingFusion.LoveOrDeath {
             }
         }
 
+        public event System.Action OnCombatActionsResolved;
+
+        public event System.Action OnCombatStart;
+        public event System.Action OnCombatEnd;
+
         bool CheckTurnEndCondition() {
             return _turn <= 0;
         }
@@ -45,85 +50,74 @@ namespace com.AmazingFusion.LoveOrDeath {
             Turn = _maxTurns;
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
+
+            if (OnCombatStart != null) OnCombatStart();
         }
 
-        void EndCombat() {
-
+        void EndCombat(bool win) {
+            if (OnCombatEnd != null) OnCombatEnd();
         }
 
         public void PlayAction(CharacterAction playerAction) {
 
             CharacterAction rivalAction = _rivalCharacter.GetAction();
-            
-            if(playerAction.Type == CharacterAction.ActionType.Ultimate)
-            {
-                //EVENTO playerAction.OnUltimate
-                _playerCharacter.ultimateEvent();
-                _rivalCharacter.CurrentLife -= playerAction.Damage; 
-            }
-            else if (rivalAction.Type == CharacterAction.ActionType.Ultimate)
-            {
-                //EVENTO rivalAction.OnUltimate
-                _rivalCharacter.ultimateEvent();
-                _playerCharacter.CurrentLife -= rivalAction.Damage;
-            }
-            else
-            {
-                _playerCharacter.CurrentEnergy += playerAction.EnergyEarned;
-                _rivalCharacter.CurrentEnergy += rivalAction.EnergyEarned;
 
-                if(playerAction.Type == CharacterAction.ActionType.Offensive)
-                {
-                    if(rivalAction.Type == CharacterAction.ActionType.Offensive)
-                    {
-                        //EVENTO playerAction.OnAttack
-                        _playerCharacter.AttackEvent();
-                        _rivalCharacter.CurrentLife -= playerAction.Damage;
-                        //EVENTO rivalAction.OnAttack
-                        _rivalCharacter.AttackEvent();
-                        _playerCharacter.CurrentLife -= rivalAction.Damage;
-                    }
-                    else
-                    {
-                        //EVENTO playerAction.OnAttack
-                        //EVENTO rivalAction.OnDefense
-                        _playerCharacter.AttackEvent();
-                        _rivalCharacter.DefenseEvent();
-                        _playerCharacter.CurrentLife -= rivalAction.Damage;
-                    }
-                }
-                else if(playerAction.Type == CharacterAction.ActionType.Defensive)
-                {
-                    if (rivalAction.Type == CharacterAction.ActionType.Offensive)
-                    {
-                        //EVENTO rivalAction.OnAttack
-                        //EVENTO playerAction.OnDefense
-                        _rivalCharacter.AttackEvent();
-                        _playerCharacter.DefenseEvent();
-                        _rivalCharacter.CurrentLife -= playerAction.Damage;
+            CharacterAction.ActionResult actionResult = playerAction.ClashAction(rivalAction);
 
-                    }
-                    else
-                    {
-                        //EVENTO playerAction.OnDefense
-                        //EVENTO rivalAction.OnDefense
-                        _playerCharacter.DefenseEvent();
-                        _rivalCharacter.DefenseEvent();
-                    }
+            switch (actionResult) {
+                case CharacterAction.ActionResult.None:
+                    playerAction.ActionResolved(false);
+                    rivalAction.ActionResolved(false);
+
+                    break;
+                case CharacterAction.ActionResult.Win:
+                    playerAction.ActionResolved(true);
+                    rivalAction.ActionResolved(false);
+
+                    _rivalCharacter.CurrentLife -= playerAction.Damage;
+
+                    break;
+                case CharacterAction.ActionResult.Lose:
+                    playerAction.ActionResolved(false);
+                    rivalAction.ActionResolved(true);
+
+                    _playerCharacter.CurrentLife -= rivalAction.Damage;
+
+                    break;
+                case CharacterAction.ActionResult.Both:
+                    playerAction.ActionResolved(true);
+                    rivalAction.ActionResolved(true);
+
+                    _rivalCharacter.CurrentLife -= playerAction.Damage;
+                    _playerCharacter.CurrentLife -= rivalAction.Damage;
+
+                    break;
+            }
+
+            _playerCharacter.CurrentEnergy += playerAction.EnergyEarned;
+            _rivalCharacter.CurrentEnergy += rivalAction.EnergyEarned;
+
+            if (OnCombatActionsResolved != null) OnCombatActionsResolved();
+
+            if (CheckPlayerLifeEndCondition() || CheckRivalLifeEndCondition()) {
+                EndCombat(false);
+            } else {
+                ++Turn;
+                if (CheckTurnEndCondition()) {
+                    EndCombat(false);
                 }
             }
-            
         }
 
         public void Kiss()
         {
             if(CheckKissVictoryCondition())
             {
-                //TODO: Win playerAction
+                EndCombat(true);
             }
             else
             {
-                //TODO: Win rivalAction
+                EndCombat(false);
             }
         }
     }

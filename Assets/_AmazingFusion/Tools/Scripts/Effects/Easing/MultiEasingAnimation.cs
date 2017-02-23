@@ -4,28 +4,16 @@ using UnityEngine;
 using MovementEffects;
 
 namespace com.AmazingFusion {
-    public class MultiEasingAnimation : OptimizedBehaviour, IEffectable {
+    public class MultiEasingAnimation : EasingAnimation {
 
         [SerializeField]
         EasingInfo[] _easingInfo;
 
-        [SerializeField]
-        double _duration;
+        public override event Action<IEffectable> OnStart;
+        public override event Action<IEffectable> OnUpdate;
+        public override event Action<IEffectable> OnEnd;
 
-        double _starTime;
-        double _currentTime;
-
-        public event Action<MultiEasingAnimation> OnStart;
-        public event Action<MultiEasingAnimation> OnUpdate;
-        public event Action<IEffectable> OnEnd;
-
-
-        public void Play() {
-            _starTime = Time.time;
-            Timing.RunCoroutine(DoEasing());
-        }
-
-        protected virtual IEnumerator<float> DoEasing() {
+        protected override IEnumerator<float> DoEasing() {
             if (OnStart != null) OnStart(this);
 
             double endTime = _starTime + _duration;
@@ -45,7 +33,7 @@ namespace com.AmazingFusion {
             if (OnEnd != null) OnEnd(this);
         }
 
-        public virtual void EasingUpdate() {
+        protected virtual void EasingUpdate() {
             for (int i = 0; i < _easingInfo.Length; ++i) {
                 EasingUpdate(i);
             }
