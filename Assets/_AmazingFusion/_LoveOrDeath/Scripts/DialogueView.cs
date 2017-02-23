@@ -15,23 +15,30 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         TMP_Text _text;
 
-        public System.Action OnClose;
+        public event System.Action OnClose;
+
+        void Start() {
+            CombatController.Instance.OnCombatActionsResolved += (CharacterAction.ActionResult result) => {
+                SetText(result);
+                EffectsManager.Instance.AddEffect(_showAnimation);
+            };
+        }
 
         public void SetText(CharacterAction.ActionResult result) {
             switch (result) {
                 case CharacterAction.ActionResult.None:
+                    _text.text = "Nadie gana";
                     break;
                 case CharacterAction.ActionResult.Win:
+                    _text.text = "¡Has ganado!";
                     break;
                 case CharacterAction.ActionResult.Lose:
+                    _text.text = "Has perdido";
                     break;
                 case CharacterAction.ActionResult.Both:
+                    _text.text = "Los dos ganais";
                     break;
             }
-        }
-
-        public void Show() {
-            _showAnimation.Play();
         }
 
         public void Close() {

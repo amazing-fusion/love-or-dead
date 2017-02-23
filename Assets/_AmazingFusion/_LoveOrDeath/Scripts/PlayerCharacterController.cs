@@ -60,6 +60,14 @@ namespace com.AmazingFusion.LoveOrDeath
             }
         }
 
+        public override bool CanPlayAction(CharacterAction action) {
+            if (action.Type == CharacterAction.ActionType.Ultimate && !CanPlayUltimate()) {
+                return false;
+            } else {
+                return base.CanPlayAction(action);
+            }
+        }
+
         public bool CanPlayUltimate()
         {
             if (_ultimateCounter >= _ultimateActivationSuccess)

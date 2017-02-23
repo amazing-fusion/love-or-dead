@@ -84,7 +84,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             CurrentEnergy = _initialEnergy;
         }
 
-        public bool CanPlayAction(CharacterAction action) {
+        public virtual bool CanPlayAction(CharacterAction action) {
 
             if(_currentEnergy >= action.EnergyCost)
             {
@@ -94,7 +94,6 @@ namespace com.AmazingFusion.LoveOrDeath {
             {
                 return false;
             }
-
         }
 
         public void PickAction(CharacterAction action) {
