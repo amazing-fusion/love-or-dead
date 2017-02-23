@@ -15,27 +15,44 @@ namespace com.AmazingFusion.LoveOrDeath
         Vector3 startPosition;
         Transform startParent;
 
+        MoveToEasingAnimation _moveAnimation;
+
+        public MoveToEasingAnimation MoveAnimation
+        {
+            get
+            {
+                return _moveAnimation;
+            }
+        }
+
+        void Awake()
+        {
+            _moveAnimation = GetComponent<MoveToEasingAnimation>();
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             cardBeingDragged = gameObject;
-            startPosition = transform.position;
-            startParent = transform.parent;
+            startPosition = Transform.localPosition;
+            startParent = Transform.parent;
             GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position = Input.mousePosition;
+            Transform.position = Input.mousePosition;
+            Debug.Log("On Drag");
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            Debug.Log("On End Drag");
             cardBeingDragged = null;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
-            if (transform.parent == startParent)
-            {
-                transform.position = startPosition;
-            }
+
+            MoveAnimation.SetStartPositionAsCurrentLocalPosition();
+            MoveAnimation.SetEndPosition(startPosition);
+            MoveAnimation.Play();
         }
     }
 }
