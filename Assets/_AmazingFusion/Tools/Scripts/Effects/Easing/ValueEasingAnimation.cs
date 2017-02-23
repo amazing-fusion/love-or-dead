@@ -24,6 +24,18 @@ namespace com.AmazingFusion {
             Timing.RunCoroutine(DoEasing());
         }
 
+        public void SetStartValue(double startValue) {
+            _easingInfo.StartValue = startValue;
+        }
+
+        public void SetChangeValue(double changeValue) {
+            _easingInfo.ChangeValue = changeValue;
+        }
+
+        public void SetEndValue(double endValue) {
+            SetChangeValue(endValue - _easingInfo.StartValue);
+        }
+
         public virtual IEnumerator<float> DoEasing() {
             if (OnStart != null) OnStart(this);
 
@@ -35,7 +47,7 @@ namespace com.AmazingFusion {
 
                 yield return 0;
             }
-            _easingInfo.Update(_duration, _duration);
+            _currentTime = _duration;
             EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 

@@ -63,11 +63,11 @@ namespace com.AmazingFusion.LoveOrDeath {
         public event System.Action OnDefense;
         public event System.Action OnUltimate;
 
-        public void attackEvent()
+        public void AttackEvent()
         {
             if (OnAttack != null) OnAttack();
         }
-        public void defenseEvent()
+        public void DefenseEvent()
         {
             if (OnDefense != null) OnDefense();
         }

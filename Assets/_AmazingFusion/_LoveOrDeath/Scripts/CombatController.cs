@@ -20,10 +20,13 @@ namespace com.AmazingFusion.LoveOrDeath {
             get {
                 return _turn;
             }
+            private set {
+                _turn = value;
+            }
         }
 
         bool CheckTurnEndCondition() {
-            return _turn >= _maxTurns;
+            return _turn <= 0;
         }
 
         bool CheckPlayerLifeEndCondition() {
@@ -39,6 +42,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         void StartCombat() {
+            Turn = _maxTurns;
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
         }
@@ -73,18 +77,18 @@ namespace com.AmazingFusion.LoveOrDeath {
                     if(rivalAction.Type == CharacterAction.ActionType.Offensive)
                     {
                         //EVENTO playerAction.OnAttack
-                        _playerCharacter.attackEvent();
+                        _playerCharacter.AttackEvent();
                         _rivalCharacter.CurrentLife -= playerAction.Damage;
                         //EVENTO rivalAction.OnAttack
-                        _rivalCharacter.attackEvent();
+                        _rivalCharacter.AttackEvent();
                         _playerCharacter.CurrentLife -= rivalAction.Damage;
                     }
                     else
                     {
                         //EVENTO playerAction.OnAttack
                         //EVENTO rivalAction.OnDefense
-                        _playerCharacter.attackEvent();
-                        _rivalCharacter.defenseEvent();
+                        _playerCharacter.AttackEvent();
+                        _rivalCharacter.DefenseEvent();
                         _playerCharacter.CurrentLife -= rivalAction.Damage;
                     }
                 }
@@ -94,8 +98,8 @@ namespace com.AmazingFusion.LoveOrDeath {
                     {
                         //EVENTO rivalAction.OnAttack
                         //EVENTO playerAction.OnDefense
-                        _rivalCharacter.attackEvent();
-                        _playerCharacter.defenseEvent();
+                        _rivalCharacter.AttackEvent();
+                        _playerCharacter.DefenseEvent();
                         _rivalCharacter.CurrentLife -= playerAction.Damage;
 
                     }
@@ -103,8 +107,8 @@ namespace com.AmazingFusion.LoveOrDeath {
                     {
                         //EVENTO playerAction.OnDefense
                         //EVENTO rivalAction.OnDefense
-                        _playerCharacter.defenseEvent();
-                        _rivalCharacter.defenseEvent();
+                        _playerCharacter.DefenseEvent();
+                        _rivalCharacter.DefenseEvent();
                     }
                 }
             }

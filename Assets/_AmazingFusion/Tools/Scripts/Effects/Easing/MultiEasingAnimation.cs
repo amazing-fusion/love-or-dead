@@ -37,6 +37,8 @@ namespace com.AmazingFusion {
                 if (OnUpdate != null) OnUpdate(this);
                 yield return 0;
             }
+
+            _currentTime = _duration;
             EasingUpdate();
             if (OnUpdate != null) OnUpdate(this);
 
