@@ -8,23 +8,42 @@ namespace com.AmazingFusion.LoveOrDeath
 {
     public class Slot : OptimizedBehaviour, IDropHandler
     {
-        public GameObject _card
+        [SerializeField]
+        Vector3 _slotPosition;
+
+        public GameObject _slotDrag
         {
             get
             {
-                if(transform.childCount > 0)
-                {
-                    return transform.GetChild(0).gameObject;
-                }
+                if (transform.name == "DragZone")
+                    {
+                        return gameObject;
+                    }
                 return null;
+            }
+        }
+
+        public Vector3 SlotPosition
+        {
+            get
+            {
+                return _slotPosition;
+            }
+
+            set
+            {
+                _slotPosition = value;
             }
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (!_card)
+            print(_slotDrag);
+            if (_slotDrag)
             {
-                ActionView.cardBeingDragged.transform.SetParent(transform);
+                PlayerActionView.cardBeingDragged.transform.SetParent(transform.parent.GetChild(0),true);
+
+                CombatController.Instance.PlayAction(PlayerActionView.cardBeingDragged.GetComponent<PlayerActionView>().Action);
             }
         }
     }
