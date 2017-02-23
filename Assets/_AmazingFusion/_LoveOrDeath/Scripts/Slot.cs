@@ -8,9 +8,6 @@ namespace com.AmazingFusion.LoveOrDeath
 {
     public class Slot : OptimizedBehaviour, IDropHandler
     {
-        [SerializeField]
-        Vector3 _slotPosition;
-
         public GameObject _slotDrag
         {
             get
@@ -23,23 +20,9 @@ namespace com.AmazingFusion.LoveOrDeath
             }
         }
 
-        public Vector3 SlotPosition
-        {
-            get
-            {
-                return _slotPosition;
-            }
-
-            set
-            {
-                _slotPosition = value;
-            }
-        }
-
         public void OnDrop(PointerEventData eventData)
         {
-            print(_slotDrag);
-            if (_slotDrag)
+            if ( _slotDrag)
             {
                 PlayerActionView.cardBeingDragged.transform.SetParent(transform.parent.GetChild(0),true);
                 PlayerActionView.cardBeingDragged.PlayAction();

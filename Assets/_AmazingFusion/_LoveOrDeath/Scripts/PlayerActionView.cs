@@ -29,6 +29,19 @@ namespace com.AmazingFusion.LoveOrDeath
             }
         }
 
+        public bool Dragging
+        {
+            get
+            {
+                return _dragging;
+            }
+
+            set
+            {
+                _dragging = value;
+            }
+        }
+
         void Awake()
         {
             _moveAnimation = GetComponent<MoveToEasingAnimation>();
@@ -45,7 +58,7 @@ namespace com.AmazingFusion.LoveOrDeath
         {
             if (_canDrag && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
-                _dragging = true;
+                Dragging = true;
                 cardBeingDragged = this;
                 startPosition = Transform.localPosition;
                 startParent = Transform.parent;
@@ -62,7 +75,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (_dragging && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
+            if (Dragging && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
                 Transform.position = Input.mousePosition;
             }
@@ -70,9 +83,10 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (_dragging)
+            if (Dragging && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
                 cardBeingDragged = null;
+                Dragging = false;
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
 
                 if (transform.parent == startParent)
