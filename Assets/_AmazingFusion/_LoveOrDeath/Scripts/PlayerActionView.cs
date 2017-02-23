@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace com.AmazingFusion.LoveOrDeath
 {
-    public class ActionView : OptimizedBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class PlayerActionView : OptimizedBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField]
         CharacterAction _action;
@@ -18,13 +18,13 @@ namespace com.AmazingFusion.LoveOrDeath
         MoveToEasingAnimation _moveAnimation;
         ScaleEasingAnimation _scaleAnimation;
 
-        /** public MoveToEasingAnimation MoveAnimation
-         {
-             get
-             {
-                 return _moveAnimation;
-             }
-         }*/
+        public CharacterAction Action
+        {
+            get
+            {
+                return _action;
+            }
+        }
 
         void Awake()
         {
@@ -47,18 +47,27 @@ namespace com.AmazingFusion.LoveOrDeath
         public void OnDrag(PointerEventData eventData)
         {
             Transform.position = Input.mousePosition;
-            Debug.Log("On Drag");
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Debug.Log("On End Drag");
             cardBeingDragged = null;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-            _moveAnimation.SetStartPositionAsCurrentLocalPosition();
+            /*_moveAnimation.SetStartPositionAsCurrentLocalPosition();
             _moveAnimation.SetEndPosition(startPosition);
-            _moveAnimation.Play();
+            _moveAnimation.Play();*/
+
+            if (transform.parent == startParent)
+            {
+                _moveAnimation.SetStartPositionAsCurrentLocalPosition();
+                _moveAnimation.SetEndPosition(startPosition);
+                _moveAnimation.Play();
+
+                _scaleAnimation.SetStartScaleAsCurrentScale();
+                _scaleAnimation.SetEndValue(1);
+                _scaleAnimation.Play();
+            }
         }
     }
 }

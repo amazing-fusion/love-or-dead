@@ -57,15 +57,5 @@ namespace com.AmazingFusion {
         protected virtual void EasingUpdate() {
             _easingInfo.Update(_currentTime, _duration);
         }
-
-        public void SetStartValue(double value)
-        {
-            _easingInfo.StartValue = value;
-        }
-
-        public void SetChangeValue(double value)
-        {
-            _easingInfo.ChangeValue = value;
-        }
     }
 }
