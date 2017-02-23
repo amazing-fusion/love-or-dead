@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001876c6d864cba4ca4c90c0cbd05993, type: 3}
-  m_Name: PlayerTalkAction
+  m_Name: Defense
   m_EditorClassIdentifier: 
-  _key: PlayerTalkAction
-  _type: 0
+  _key: Defense
+  _type: 2
   _aiEnabled: 1
   _requiredLevel: 0
-  _energyCost: 0
-  _energyEarned: 1
-  _damage: 0
+  _energyCost: 2
+  _energyEarned: 0
+  _damage: 10
