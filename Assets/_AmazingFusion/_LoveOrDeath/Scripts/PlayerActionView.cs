@@ -39,6 +39,8 @@ namespace com.AmazingFusion.LoveOrDeath
             startParent = Transform.parent;
             GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+            startParent.SetAsLastSibling();
+
             _scaleAnimation.SetStartValue(1);
             _scaleAnimation.SetChangeValue(0.5);
             _scaleAnimation.Play();
