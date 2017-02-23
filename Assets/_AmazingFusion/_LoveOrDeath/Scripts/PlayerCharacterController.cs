@@ -40,6 +40,12 @@ namespace com.AmazingFusion.LoveOrDeath
             }
         }
 
+        public int UltimateActivationSuccess {
+            get {
+                return _ultimateActivationSuccess;
+            }
+        }
+
         public event System.Action OnUltimateChange;
 
         public bool PlayAction(CharacterAction action)

@@ -8,16 +8,10 @@ namespace com.AmazingFusion.LoveOrDeath {
     public class PlayerView : Singleton<PlayerView> {
 
         [SerializeField]
-        TMP_Text _lifeText;
+        TextValueEasingAnimation _lifeAnimation;
 
         [SerializeField]
-        TMP_Text _energyText;
-
-        [SerializeField]
-        Image _ultimateImage;
-
-        [SerializeField]
-        EasingAnimation _setValuesAnimation;
+        TextValueEasingAnimation _energyAnimation;
 
         [SerializeField]
         FillAmountImageEasingAnimation _ultimateAnimation;
@@ -29,17 +23,25 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         public void Initialize() {
-            //_lifeText.text = CombatController.Instance.
+            SetPlayerValues();
         }
 
         void SetPlayerValues() {
-            //_ultimateAnimation.MaxValue = CombatController.Instance.
-            _setValuesAnimation.OnEnd += ValuesChanged;
-            _setValuesAnimation.Play();
+            _lifeAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentLife);
+            _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentEnergy);
+            
+            _ultimateAnimation.MaxValue = CombatController.Instance.PlayerCharacter.UltimateActivationSuccess;
+            _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.UltimateCounter);
+
+            _ultimateAnimation.OnEnd += ValuesChanged;
+
+            _lifeAnimation.Play();
+            _energyAnimation.Play();
+            _ultimateAnimation.Play();
         }
 
         void ValuesChanged(IEffectable effect) {
-            _setValuesAnimation.OnEnd -= ValuesChanged;
+            _ultimateAnimation.OnEnd -= ValuesChanged;
             if (OnValuesChanged != null) OnValuesChanged();
         }
     }

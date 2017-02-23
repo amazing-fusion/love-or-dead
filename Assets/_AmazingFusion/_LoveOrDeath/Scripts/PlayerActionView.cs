@@ -46,7 +46,7 @@ namespace com.AmazingFusion.LoveOrDeath
             /*
              Evento de acabar todos lo eventos del flujo
              */
-            CombatController.Instance.OnTurnChange += () => { _canDrag = true; };
+            PlayerView.Instance.OnValuesChanged += () => { _canDrag = true; };
         }
 
         public void OnBeginDrag(PointerEventData eventData)
