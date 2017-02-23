@@ -62,7 +62,7 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             List<CharacterAction> temActionList = new List<CharacterAction>(_actionsList);
 
-            if(_patternLength < _currentPatternIndex && _currentPatternIndex >= _pattern.Count)
+            if( _currentPatternIndex >= _pattern.Count)
             {
                while(temActionList.Count > 0)
                 {
@@ -74,7 +74,7 @@ namespace com.AmazingFusion.LoveOrDeath {
                     else
                     {
                         action = temActionList[random];
-                        _pattern[_currentPatternIndex] = action;
+                        _pattern.Add(action);
                         break;
                     }
                 }

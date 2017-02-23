@@ -42,8 +42,7 @@ namespace com.AmazingFusion.LoveOrDeath
             if (_slotDrag)
             {
                 PlayerActionView.cardBeingDragged.transform.SetParent(transform.parent.GetChild(0),true);
-
-                CombatController.Instance.PlayAction(PlayerActionView.cardBeingDragged.GetComponent<PlayerActionView>().Action);
+                PlayerActionView.cardBeingDragged.PlayAction();
             }
         }
     }

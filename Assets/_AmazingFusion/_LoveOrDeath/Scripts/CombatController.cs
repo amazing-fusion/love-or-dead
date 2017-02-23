@@ -21,14 +21,33 @@ namespace com.AmazingFusion.LoveOrDeath {
                 return _turn;
             }
             private set {
-                _turn = value;
+                if(_turn != value)
+                {
+                    _turn = value;
+                    if (OnTurnChange != null) OnTurnChange();
+                }
             }
+        }
+
+        public PlayerCharacterController PlayerCharacter
+        {
+            get
+            {
+                return _playerCharacter;
+            }
+        }
+
+        void Start()
+        {
+            StartCombat();
         }
 
         public event System.Action OnCombatActionsResolved;
 
         public event System.Action OnCombatStart;
         public event System.Action OnCombatEnd;
+
+        public event System.Action OnTurnChange;
 
         bool CheckTurnEndCondition() {
             return _turn <= 0;
@@ -45,6 +64,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         bool CheckKissVictoryCondition() {
             return _rivalCharacter.CurrentLife <= _rivalCharacter.LovingLife;
         }
+
 
         void StartCombat() {
             Turn = _maxTurns;
@@ -63,6 +83,13 @@ namespace com.AmazingFusion.LoveOrDeath {
             CharacterAction rivalAction = _rivalCharacter.GetAction();
 
             CharacterAction.ActionResult actionResult = playerAction.ClashAction(rivalAction);
+
+            Debug.Log("Player Action " + playerAction.Type);
+            Debug.Log("Player Life " + _playerCharacter.CurrentLife);
+            Debug.Log("Player Energy " + _playerCharacter.CurrentEnergy);
+            Debug.Log("Rival Action " + rivalAction.Type);
+            Debug.Log("Rival Life " + _rivalCharacter.CurrentLife);
+            Debug.Log("Rival Energy " + _rivalCharacter.CurrentEnergy);
 
             switch (actionResult) {
                 case CharacterAction.ActionResult.None:
