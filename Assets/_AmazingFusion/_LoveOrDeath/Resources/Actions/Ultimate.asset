@@ -18,3 +18,4 @@ MonoBehaviour:
   _energyCost: 0
   _energyEarned: 0
   _damage: 30
+  _sprite: {fileID: 0}

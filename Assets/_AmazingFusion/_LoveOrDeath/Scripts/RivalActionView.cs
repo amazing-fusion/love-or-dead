@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace com.AmazingFusion.LoveOrDeath {
+    [RequireComponent(typeof(Image))]
     public class RivalActionView : OptimizedBehaviour {
 
         [SerializeField]
@@ -14,11 +16,15 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         EasingAnimation _hideLoseAnimation;
 
+        Image _image;
+
         void Awake() {
+            _image = GetComponent<Image>();
             CombatController.Instance.RivalCharacter.OnActionPicked += Show;
         }
 
         public void Show(CharacterAction action) {
+            _image.sprite = action.Sprite;
             CombatController.Instance.RivalCharacter.OnActionResolved += HideResult;
             EffectsManager.Instance.AddEffect(_showAnimation);
         }
