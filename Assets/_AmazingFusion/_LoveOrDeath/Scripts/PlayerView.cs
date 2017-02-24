@@ -39,7 +39,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             _ultimateAnimation.MaxValue = CombatController.Instance.PlayerCharacter.UltimateActivationSuccess;
             _ultimateAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.UltimateCounter);
 
-            _ultimateAnimation.OnEnd += ValuesChanged;
+            _energyAnimation.OnEnd += ValuesChanged;
 
             _lifeAnimation.Play();
             _energyAnimation.Play();
@@ -47,7 +47,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         void ValuesChanged(IEffectable effect) {
-            _ultimateAnimation.OnEnd -= ValuesChanged;
+            _energyAnimation.OnEnd -= ValuesChanged;
             if (OnValuesChanged != null) OnValuesChanged();
         }
     }

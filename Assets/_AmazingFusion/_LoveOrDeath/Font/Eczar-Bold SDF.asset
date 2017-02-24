@@ -1077,7 +1077,7 @@ Material:
       second: 0
     - first:
         name: _OutlineWidth
-      second: 0
+      second: 0.35
     - first:
         name: _PerspectiveFilter
       second: 0.875
@@ -1168,7 +1168,7 @@ Material:
       second: {r: 0, g: 0, b: 10000, a: 10000}
     - first:
         name: _OutlineColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.7294118, g: 0.015686275, b: 0.0627451, a: 1}
     - first:
         name: _ReflectFaceColor
       second: {r: 0, g: 0, b: 0, a: 1}

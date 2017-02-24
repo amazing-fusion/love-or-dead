@@ -11,19 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74dfce233ddb29b4294c3e23c1d3650d, type: 3}
   m_Name: Eczar-Regular SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1796054903
   material: {fileID: 21315208139335300}
-  materialHashCode: 0
+  materialHashCode: 407186786
   fontAssetType: 1
   m_fontInfo:
     Name: Eczar
     PointSize: 72
-    Scale: 0
+    Scale: 1
     CharacterCount: 97
     LineHeight: 127.9375
     Baseline: 0
     Ascender: 82.3125
-    CapHeight: 0
+    CapHeight: 48.5625
     Descender: -45.6875
     CenterLine: 0
     SuperscriptOffset: 82.3125
@@ -31,19 +31,19 @@ MonoBehaviour:
     SubSize: 0.5
     Underline: -12.24
     UnderlineThickness: 5.04
-    TabWidth: 0
+    TabWidth: 190.625
     Padding: 5
     AtlasWidth: 512
     AtlasHeight: 512
-  atlas: {fileID: 28406551750042968}
+  atlas: {fileID: 28039335338112240}
   m_glyphInfoList:
   - id: 32
     x: 6
     y: 517
-    width: 0
-    height: 0
+    width: 19.0625
+    height: 128
     xOffset: 0
-    yOffset: 0
+    yOffset: 82.3125
     xAdvance: 19.0625
     scale: 1
   - id: 33
@@ -993,7 +993,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 28406551750042968}
+        m_Texture: {fileID: 28039335338112240}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -1086,13 +1086,13 @@ Material:
       second: 10
     - first:
         name: _ScaleRatioA
-      second: 1
+      second: 0.8333333
     - first:
         name: _ScaleRatioB
-      second: 1
+      second: 0.8333333
     - first:
         name: _ScaleRatioC
-      second: 1
+      second: 0.8333333
     - first:
         name: _ScaleX
       second: 1
@@ -1168,7 +1168,7 @@ Material:
       second: {r: 0, g: 0, b: 10000, a: 10000}
     - first:
         name: _OutlineColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.7294118, g: 0.015686275, b: 0.0627451, a: 1}
     - first:
         name: _ReflectFaceColor
       second: {r: 0, g: 0, b: 0, a: 1}
@@ -1181,7 +1181,7 @@ Material:
     - first:
         name: _UnderlayColor
       second: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!28 &28406551750042968
+--- !u!28 &28039335338112240
 Texture2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
