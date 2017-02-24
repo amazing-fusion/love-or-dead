@@ -45,6 +45,9 @@ namespace com.AmazingFusion.LoveOrDeath
         [SerializeField]
         int _damage;
 
+        [SerializeField]
+        Sprite _sprite;
+
         public string Key
         {
             get
@@ -112,6 +115,12 @@ namespace com.AmazingFusion.LoveOrDeath
             get
             {
                 return _aiEnabled;
+            }
+        }
+
+        public Sprite Sprite {
+            get {
+                return _sprite;
             }
         }
 
@@ -199,15 +208,9 @@ namespace com.AmazingFusion.LoveOrDeath
             return actionResult;
         }
 
-        public void ActionResolved(bool win) {
-            if (OnActionResolved != null) OnActionResolved(win);
-        }
-
         public static CharacterAction[] LoadAll() {
             return Resources.LoadAll<CharacterAction>(ACTIONS_PATH);
         }
-
-        public event System.Action<bool> OnActionResolved;
     }
 }
 

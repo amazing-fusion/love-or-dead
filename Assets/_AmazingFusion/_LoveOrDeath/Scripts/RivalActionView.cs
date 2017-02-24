@@ -5,29 +5,32 @@ using UnityEngine;
 namespace com.AmazingFusion.LoveOrDeath {
     public class RivalActionView : OptimizedBehaviour {
 
+        [SerializeField]
         EasingAnimation _showAnimation;
+
+        [SerializeField]
         EasingAnimation _hideWinAnimation;
+
+        [SerializeField]
         EasingAnimation _hideLoseAnimation;
 
-        AICharacterController _rivalCharacter;
-
         void Awake() {
-            _rivalCharacter.GetComponent<AICharacterController>();
-            _hideWinAnimation.OnEnd += (IEffectable effect) => { gameObject.SetActive(true); };
-            _hideLoseAnimation.OnEnd += (IEffectable effect) => { gameObject.SetActive(true); };
+            CombatController.Instance.RivalCharacter.OnActionPicked += Show;
         }
 
-        public void Show() {
-            gameObject.SetActive(true);
-            _showAnimation.Play();
+        public void Show(CharacterAction action) {
+            CombatController.Instance.RivalCharacter.OnActionResolved += HideResult;
+            EffectsManager.Instance.AddEffect(_showAnimation);
         }
 
-        public void Win() {
-            _showAnimation.Play();
-        }
+        public void HideResult(bool win) {
+            CombatController.Instance.RivalCharacter.OnActionResolved -= HideResult;
 
-        public void Lose() {
-            _hideLoseAnimation.Play();
+            if (win) {
+                EffectsManager.Instance.AddEffect(_hideWinAnimation);
+            } else {
+                EffectsManager.Instance.AddEffect(_hideLoseAnimation);
+            }
         }
     }
 }

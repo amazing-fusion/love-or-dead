@@ -32,9 +32,10 @@ namespace com.AmazingFusion.LoveOrDeath
 
             set
             {
-                if(_ultimateCounter != value)
+                int v = Mathf.Min(value, _ultimateActivationSuccess);
+                if(_ultimateCounter != v)
                 {
-                    _ultimateCounter = value;
+                    _ultimateCounter = v;
                     if (OnUltimateChange != null) OnUltimateChange();
                 }
             }
