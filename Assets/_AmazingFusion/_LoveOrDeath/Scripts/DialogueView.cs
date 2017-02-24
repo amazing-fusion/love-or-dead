@@ -15,6 +15,9 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         TMP_Text _text;
 
+        [SerializeField]
+        CharacterAnimator _animatorController;
+
         public event System.Action OnClose;
 
         void Start() {
@@ -29,15 +32,19 @@ namespace com.AmazingFusion.LoveOrDeath {
                 case CharacterAction.ActionResult.None:
                     //SmartLocalization.LanguageManager.Instance.
                     _text.text = "Nadie gana";
+                    _animatorController.PlayNoneDamageAnimation();
                     break;
                 case CharacterAction.ActionResult.Win:
                     _text.text = "¡Has ganado!";
+                    _animatorController.PlayRivalLovingAnimation();
                     break;
                 case CharacterAction.ActionResult.Lose:
                     _text.text = "Has perdido";
+                    _animatorController.PlayRivalHitAnimation();
                     break;
                 case CharacterAction.ActionResult.Both:
                     _text.text = "Los dos ganais";
+                    _animatorController.PlayBothAttackAnimation();
                     break;
             }
         }
