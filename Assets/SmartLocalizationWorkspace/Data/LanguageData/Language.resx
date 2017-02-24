@@ -119,4 +119,19 @@
 	<data name="MyFirst.Key" xml:space="preserve">
 		<value>MyFirstValue</value>
 	</data>
+	<data name="Speech.None.BonitoCuero" xml:space="preserve">
+		<value>El cuero te queda muy bien, la verdad.</value>
+	</data>
+	<data name="Speech.Win.Trucha" xml:space="preserve">
+		<value>Te quiero como la trucha al trucho</value>
+	</data>
+	<data name="Speech.Lose.CuloHambre" xml:space="preserve">
+		<value>Que no vea yo que ese culito pasa hambre</value>
+	</data>
+	<data name="Speech.Both.PenetrarEspada" xml:space="preserve">
+		<value>Quiero que me penetres con tu espada</value>
+	</data>
+	<data name="Speech.Ultimate.Caramelo" xml:space="preserve">
+		<value>Quisiera ser caramelo, para pegarme en tus labios y deshacerme en tu boca.</value>
+	</data>
 </root>
