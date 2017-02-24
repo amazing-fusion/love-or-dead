@@ -19,6 +19,9 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         CharacterAnimator _animatorController;
 
+        CharacterAction _characterAction;
+        CharacterAction.ActionResult _result;
+
         List<string> _ultimateSpeech;
         List<string> _noneSpeech;
         List<string> _winSpeech;
@@ -35,23 +38,25 @@ namespace com.AmazingFusion.LoveOrDeath {
             _loseSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Lose.");
             _bothSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Both.");
 
-            //_showAnimation.OnEnd += 
+            _showAnimation.OnEnd += (IEffectable effect) => { AnimationsAndSounds(); };   
 
             CombatController.Instance.OnCombatActionsResolved += (CharacterAction action, CharacterAction.ActionResult result) => {
+                _result = result;
+                _characterAction = action;
                 SetText(action, result);
                 EffectsManager.Instance.AddEffect(_showAnimation);
             };
         }
 
-        public void AnimationsAndSounds(CharacterAction action, CharacterAction.ActionResult result)
+        public void AnimationsAndSounds()
         {
-            switch (result)
+            switch (_result)
             {
                 case CharacterAction.ActionResult.None:
                     _animatorController.PlayNoneDamageAnimation();
                     break;
                 case CharacterAction.ActionResult.Win:
-                    if (action.Type == CharacterAction.ActionType.Ultimate)
+                    if (_characterAction.Type == CharacterAction.ActionType.Ultimate)
                     {
                         AudioController.Instance.PlayRivalLovingSound();
                     }
