@@ -1,10 +1,36 @@
 fileFormatVersion: 2
 guid: b31880f5b59d34b419f312210cabb009
-timeCreated: 1487875451
+timeCreated: 1487952351
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _combatMusicClip: {fileID: 8300000, guid: 30284fb50c6271f44bc1b6d31cd13a77, type: 3}
+  - _victoryMusicClip: {fileID: 8300000, guid: 450bbbc9450595c45a6662ea55688590, type: 3}
+  - _menuMusicClip: {instanceID: 0}
+  - _defeatMusicClip: {fileID: 8300000, guid: 13abfb863b5e7fa428da200dfac812ad, type: 3}
+  - _playerTalkingSoundClip: {instanceID: 0}
+  - _rivalLovingSoundClip: {fileID: 8300000, guid: 65a79b0c73a8d0b4a8d3214f352e0daf,
+      type: 3}
+  - _rivalHitSoundClip: {fileID: 8300000, guid: ccdd195f830f86445ab93f9109d608cc,
+      type: 3}
+  - _rivalKissLoseSoundClip: {fileID: 8300000, guid: b20e6f7d759bfbc479de0bf24e2c4dd5,
+      type: 3}
+  - _rivalKissWinSoundClip: {fileID: 8300000, guid: 90199e2cf73126b49a2de444610ad66c,
+      type: 3}
+  - _publicEuphoricSoundClip: {fileID: 8300000, guid: b47e4832d94be9848919ebcfacc64b27,
+      type: 3}
+  - _publicIdleSoundClip: {fileID: 8300000, guid: 1ae882eb2a7f3e74d867dd7e9289027d,
+      type: 3}
+  - _playerDiyingSoundClip: {fileID: 8300000, guid: 06ed1fb76f4fb86428db1f688f433bb0,
+      type: 3}
+  - _beginDragSoundClip: {fileID: 8300000, guid: 82a0e565572a028408c1ec1b2dc0d45e,
+      type: 3}
+  - _dropSoundClip: {fileID: 8300000, guid: 9a9434c5712105648bbd4a01d10c6277, type: 3}
+  - _ultimateReadySoundClip: {fileID: 8300000, guid: a952b6a5f4539604490893470f9830cb,
+      type: 3}
+  - _kissSoundClip: {fileID: 8300000, guid: 99a646e467e4da446b51d5307e6787aa, type: 3}
+  - _cardWinSoundClip: {fileID: 8300000, guid: c71bf2b301726b441b69ec2fad222dfb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
