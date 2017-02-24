@@ -43,7 +43,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             }
         }
 
-        public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved;
+        public event System.Action<CharacterAction, CharacterAction.ActionResult> OnCombatActionsResolved;
 
         void Start()
         {
@@ -143,7 +143,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             Debug.Log("Final Rival Life " + _rivalCharacter.CurrentLife);
             Debug.Log("Final Rival Energy " + _rivalCharacter.CurrentEnergy);
 
-            if (OnCombatActionsResolved != null) OnCombatActionsResolved(actionResult);
+            if (OnCombatActionsResolved != null) OnCombatActionsResolved(playerAction, actionResult);
 
             if (CheckPlayerLifeEndCondition() || CheckRivalLifeEndCondition()) {
                 EndCombat(false);
