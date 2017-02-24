@@ -379,7 +379,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 317011321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1341025754}
+        m_MethodName: Kiss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &317011321
@@ -577,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409995737}
   - component: {fileID: 409995738}
+  - component: {fileID: 409995739}
   m_Layer: 5
   m_Name: RivalCharacterGO
   m_TagString: Untagged
@@ -620,6 +632,18 @@ MonoBehaviour:
   _initialEnergy: 10
   _initialPatternLength: 2
   _lovingLife: 20
+--- !u!114 &409995739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409995736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c03873bf6ff1f04a8fe19da5b36dce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2059576426}
 --- !u!1 &480688009
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,23 +749,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31880f5b59d34b419f312210cabb009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _townMusicClip: {fileID: 0}
-  _levelUpSoundClip: {fileID: 0}
-  _warningItemsProductionSoundClip: {fileID: 0}
-  _collectItemsProductionSoundClip: {fileID: 0}
-  _openOrdersBoardSoundClip: {fileID: 0}
-  _closeOrdersBoardSoundClip: {fileID: 0}
-  _selectOrdersBoardSoundClip: {fileID: 0}
-  _unselectOrdersBoardSoundClip: {fileID: 0}
-  _completeOrdersBoardSoundClip: {fileID: 0}
-  _recycleOrdersBoardSoundClip: {fileID: 0}
-  _openBuildingPanelSoundClip: {fileID: 0}
-  _closeBuildingPanelSoundClip: {fileID: 0}
-  _selectTabBuildingPanelSoundClip: {fileID: 0}
-  _warningBuildingPanelSoundClip: {fileID: 0}
-  _startBuildingSoundClip: {fileID: 0}
-  _startEditingModeSoundClip: {fileID: 0}
-  _endEditingModeSoundClip: {fileID: 0}
+  _combatMusicClip: {fileID: 0}
+  _victoryMusicClip: {fileID: 0}
+  _menuMusicClip: {fileID: 0}
+  _defeatMusicClip: {fileID: 0}
+  _playerTalkingSoundClip: {fileID: 0}
+  _rivalLovingSoundClip: {fileID: 0}
+  _rivalHitSoundClip: {fileID: 0}
+  _rivalKissLoseSoundClip: {fileID: 0}
+  _rivalKissWinSoundClip: {fileID: 0}
+  _publicEuphoricSoundClip: {fileID: 0}
+  _publicIdleSoundClip: {fileID: 0}
+  _playerDiyingSoundClip: {fileID: 0}
+  _beginDragSoundClip: {fileID: 0}
+  _dropSoundClip: {fileID: 0}
+  _ultimateReadySoundClip: {fileID: 0}
+  _kissSoundClip: {fileID: 0}
+  _cardWinSoundClip: {fileID: 0}
 --- !u!4 &535691875
 Transform:
   m_ObjectHideFlags: 0
@@ -1082,6 +1106,7 @@ MonoBehaviour:
   _showAnimation: {fileID: 655384518}
   _closeAnimation: {fileID: 655384519}
   _text: {fileID: 1783143519}
+  _animatorController: {fileID: 409995739}
 --- !u!114 &655384518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,6 +2032,7 @@ MonoBehaviour:
   _maxTurns: 4
   _playerCharacter: {fileID: 480688011}
   _rivalCharacter: {fileID: 409995738}
+  _animatorController: {fileID: 409995739}
 --- !u!4 &1341025755
 Transform:
   m_ObjectHideFlags: 0
@@ -3602,6 +3628,7 @@ GameObject:
   - component: {fileID: 2059576423}
   - component: {fileID: 2059576425}
   - component: {fileID: 2059576424}
+  - component: {fileID: 2059576426}
   m_Layer: 5
   m_Name: RivalImage
   m_TagString: Untagged
@@ -3624,8 +3651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: 442.2901}
-  m_SizeDelta: {x: 744, y: 1036}
+  m_AnchoredPosition: {x: -0.00067139, y: 442.2901}
+  m_SizeDelta: {x: 1078.2, y: 1036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059576424
 MonoBehaviour:
@@ -3646,7 +3673,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300024, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ea3182c2623f9446bb3345e7fb5d05d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3660,6 +3687,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059576422}
+--- !u!95 &2059576426
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2059576422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f5756765d729db84e8c62b31d2ca5f64, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2094346625
 GameObject:
   m_ObjectHideFlags: 0
