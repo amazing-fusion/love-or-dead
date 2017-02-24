@@ -120,28 +120,28 @@
 		<value />
 	</data>
 	<data name="Speech.Both.Agachate" xml:space="preserve">
-		<value>Agachate y conoceme</value>
+		<value>Agáchate y conóceme</value>
 	</data>
 	<data name="Speech.Both.Apuñalar" xml:space="preserve">
 		<value>Por ti me dejaría apuñalar 23 veces.</value>
 	</data>
 	<data name="Speech.Both.Azotame" xml:space="preserve">
-		<value>Azotame</value>
+		<value>Azótame</value>
 	</data>
 	<data name="Speech.Both.Daga" xml:space="preserve">
-		<value>Eso de ahí es una daga o es que te alegras de verme?</value>
+		<value>¿Eso de ahí es una daga o es que te alegras de verme?</value>
 	</data>
 	<data name="Speech.Both.GuerraEspaditas" xml:space="preserve">
 		<value>Ya veo que quieres jugar guerra de espaditas.</value>
 	</data>
 	<data name="Speech.Both.Peli" xml:space="preserve">
-		<value>Ven a mi casa a ver una peli jeje</value>
+		<value>Ven a mi casa a ver una peli, jeje...</value>
 	</data>
 	<data name="Speech.Both.PenetrarEspada" xml:space="preserve">
 		<value>Quiero que me penetres con tu espada.</value>
 	</data>
 	<data name="Speech.Both.UsoLengua" xml:space="preserve">
-		<value>Pelear quizá no... pero tu no sabes lo que domino yo de lengua.</value>
+		<value>Pelear quizá no... pero tú no sabes lo que domino yo de lengua.</value>
 	</data>
 	<data name="Speech.Lose.Carne" xml:space="preserve">
 		<value>Eso es carne y no lo que le echa mi madre al cocido.</value>
@@ -150,7 +150,7 @@
 		<value>Que no vea yo que ese culito pasa hambre.</value>
 	</data>
 	<data name="Speech.Lose.EspaldaEspada" xml:space="preserve">
-		<value>Quien fuera espada pa meterse por tu espalda.</value>
+		<value>Quién fuera espada pa meterse por tu espalda.</value>
 	</data>
 	<data name="Speech.Lose.Morcilla" xml:space="preserve">
 		<value>¿Te gusta la Morcilla?</value>
@@ -162,22 +162,22 @@
 		<value>No necesitas ese arma para llegar hasta mi corazón.</value>
 	</data>
 	<data name="Speech.None.Bizco" xml:space="preserve">
-		<value>Quien fuese bizco para verte dos veces.</value>
+		<value>Quién fuese bizco para verte dos veces.</value>
 	</data>
 	<data name="Speech.None.BonitoCuero" xml:space="preserve">
 		<value>El cuero te queda muy bien, la verdad.</value>
 	</data>
 	<data name="Speech.None.Estrella" xml:space="preserve">
-		<value>¿Que hace una estrella volando tan bajo?</value>
+		<value>¿Qué hace una estrella volando tan bajo?</value>
 	</data>
 	<data name="Speech.None.NoRopa" xml:space="preserve">
-		<value>Menos ropa y mas amor</value>
+		<value>Menos ropa y más amor</value>
 	</data>
 	<data name="Speech.None.Sol" xml:space="preserve">
 		<value>¿Acaba de salir el Sol o me has sonreido?</value>
 	</data>
 	<data name="Speech.None.Soltero" xml:space="preserve">
-		<value>Qué porte, qué habilidades, qué poderío, ¿porqué sigues soltero/a?</value>
+		<value>¡Qué porte, qué habilidades, qué poderío! ¿Por qué sigues soltero?</value>
 	</data>
 	<data name="Speech.Ultimate.Caramelo" xml:space="preserve">
 		<value>Quisiera ser caramelo, para pegarme en tus labios y deshacerme en tu boca.</value>
@@ -192,22 +192,22 @@
 		<value>Tienes unos ojos tan bonitos como tus pezones.</value>
 	</data>
 	<data name="Speech.Win.Activo" xml:space="preserve">
-		<value>Te dejare que seas el activo.</value>
+		<value>Te dejaré que seas el activo.</value>
 	</data>
 	<data name="Speech.Win.Biceps" xml:space="preserve">
-		<value>Que bíceps más perlado.</value>
+		<value>Qué bíceps más perlado.</value>
 	</data>
 	<data name="Speech.Win.CueroPegado" xml:space="preserve">
-		<value>Quien pudiera ser cuero para estar pegado a esos músculos fuertes y tonificados todo el día.</value>
+		<value>¡Quién pudiera ser cuero para estar pegado a esos músculos fuertes y tonificados todo el día!</value>
 	</data>
 	<data name="Speech.Win.InfinidadMusculos" xml:space="preserve">
-		<value>Me gustaria perderme entre la infinidad de tus musculos</value>
+		<value>Me gustaria perderme entre la infinidad de tus músculos</value>
 	</data>
 	<data name="Speech.Win.MorirLabios" xml:space="preserve">
 		<value>No quiero morir sin antes haber probado tus carnosos labios.</value>
 	</data>
 	<data name="Speech.Win.OjosAzabache" xml:space="preserve">
-		<value>¿Como vas a matar a nadie con esos preciosos ojos color azabache?</value>
+		<value>¿Cómo vas a matar a nadie con esos preciosos ojos color azabache?</value>
 	</data>
 	<data name="Speech.Win.Trucha" xml:space="preserve">
 		<value>Te quiero como la trucha al trucho.</value>

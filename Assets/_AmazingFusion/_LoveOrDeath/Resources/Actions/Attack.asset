@@ -17,5 +17,5 @@ MonoBehaviour:
   _requiredLevel: 0
   _energyCost: 2
   _energyEarned: 0
-  _damage: 10
+  _damage: 30
   _sprite: {fileID: 21300000, guid: 0a0d98d1409ee2041bfaadc6ed977f8c, type: 3}

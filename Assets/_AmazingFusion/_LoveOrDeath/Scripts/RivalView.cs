@@ -20,7 +20,7 @@ namespace com.AmazingFusion.LoveOrDeath {
 
         void SetPlayerValues() {
             _lifeAnimation.SetStartValueAsCurrentValue();
-            _lifeAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentLife);
+            _lifeAnimation.SetEndValue(CombatController.Instance.RivalCharacter.CurrentLife);
 
             _lifeAnimation.Play();
         }

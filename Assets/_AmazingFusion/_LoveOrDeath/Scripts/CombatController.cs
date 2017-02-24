@@ -83,6 +83,10 @@ namespace com.AmazingFusion.LoveOrDeath {
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
 
+            _animatorController.PlayIdleAnimation();
+            AudioController.Instance.PlayCombatMusic();
+            AudioController.Instance.PlayMenuMusic();
+
             if (OnCombatStart != null) OnCombatStart();
         }
 
@@ -155,7 +159,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             if (CheckPlayerLifeEndCondition() || CheckRivalLifeEndCondition()) {
                 EndCombat(false);
             } else {
-                ++Turn;
+                --Turn;
                 if (CheckTurnEndCondition()) {
                     EndCombat(false);
                 }

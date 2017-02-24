@@ -17,5 +17,5 @@ MonoBehaviour:
   _requiredLevel: 0
   _energyCost: 0
   _energyEarned: 0
-  _damage: 30
+  _damage: 50
   _sprite: {fileID: 0}
