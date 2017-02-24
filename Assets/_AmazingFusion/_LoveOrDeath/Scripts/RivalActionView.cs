@@ -19,14 +19,12 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         public void Show(CharacterAction action) {
-            gameObject.SetActive(true);
+            CombatController.Instance.RivalCharacter.OnActionResolved += HideResult;
             EffectsManager.Instance.AddEffect(_showAnimation);
-
-            //action.OnActionResolved += HideResult;
         }
 
         public void HideResult(bool win) {
-            //_action.OnActionResolved -= HideResult;
+            CombatController.Instance.RivalCharacter.OnActionResolved -= HideResult;
 
             if (win) {
                 EffectsManager.Instance.AddEffect(_hideWinAnimation);

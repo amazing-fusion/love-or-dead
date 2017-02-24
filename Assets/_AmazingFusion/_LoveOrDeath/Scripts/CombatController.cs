@@ -98,27 +98,27 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             switch (actionResult) {
                 case CharacterAction.ActionResult.None:
-                    playerAction.ActionResolved(false);
-                    rivalAction.ActionResolved(false);
+                    _playerCharacter.ActionResolved(false);
+                    _rivalCharacter.ActionResolved(false);
 
                     break;
                 case CharacterAction.ActionResult.Win:
-                    playerAction.ActionResolved(true);
-                    rivalAction.ActionResolved(false);
+                    _playerCharacter.ActionResolved(true);
+                    _rivalCharacter.ActionResolved(false);
 
                     _rivalCharacter.CurrentLife -= playerAction.Damage;
 
                     break;
                 case CharacterAction.ActionResult.Lose:
-                    playerAction.ActionResolved(false);
-                    rivalAction.ActionResolved(true);
+                    _playerCharacter.ActionResolved(false);
+                    _rivalCharacter.ActionResolved(true);
 
                     _playerCharacter.CurrentLife -= rivalAction.Damage;
 
                     break;
                 case CharacterAction.ActionResult.Both:
-                    playerAction.ActionResolved(true);
-                    rivalAction.ActionResolved(true);
+                    _playerCharacter.ActionResolved(true);
+                    _rivalCharacter.ActionResolved(true);
 
                     _rivalCharacter.CurrentLife -= playerAction.Damage;
                     _playerCharacter.CurrentLife -= rivalAction.Damage;

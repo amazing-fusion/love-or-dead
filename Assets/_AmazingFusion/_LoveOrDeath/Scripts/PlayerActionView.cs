@@ -12,8 +12,8 @@ namespace com.AmazingFusion.LoveOrDeath
         CharacterAction _action;
 
         public static PlayerActionView cardBeingDragged;
-        Vector3 startPosition;
-        Transform startParent;
+        Vector3 _startPosition;
+        Transform _startParent;
 
         [SerializeField]
         MoveToEasingAnimation _moveAnimation;
@@ -48,25 +48,21 @@ namespace com.AmazingFusion.LoveOrDeath
 
         void Awake()
         {
+            _startParent = Transform.parent;
+
             CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => { _canDrag = false; };
             /*
              Evento de acabar todos lo eventos del flujo
              */
-            PlayerView.Instance.OnValuesChanged += () => { _canDrag = true; };
-            CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => {
-                //action.OnActionResolved += HideResult;
+            PlayerView.Instance.OnValuesChanged += () => {
+                _canDrag = true;
+                Transform.parent = _startParent;
+                ((RectTransform)Transform).sizeDelta = ((RectTransform)Transform.parent).sizeDelta;
+                Transform.localScale = Vector3.one;
+                Transform.localPosition = _startPosition;
             };
         }
 
-        public void HideResult(bool win) {
-            //_action.OnActionResolved -= HideResult;
-
-            if (win) {
-                EffectsManager.Instance.AddEffect(_hideWinAnimation);
-            } else {
-                EffectsManager.Instance.AddEffect(_hideLoseAnimation);
-            }
-        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -74,11 +70,13 @@ namespace com.AmazingFusion.LoveOrDeath
             {
                 _dragging = true;
                 cardBeingDragged = this;
-                startPosition = Transform.localPosition;
-                startParent = Transform.parent;
+
+                _startPosition = Transform.localPosition;
+                _startParent = Transform.parent;
+
                 GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-                startParent.SetAsLastSibling();
+                _startParent.SetAsLastSibling();
 
                 _scaleAnimation.SetStartValue(1f);
                 _scaleAnimation.SetEndValue(400f / 270f);
@@ -103,10 +101,10 @@ namespace com.AmazingFusion.LoveOrDeath
                 _dragging = false;
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-                if (transform.parent == startParent)
+                if (Transform.parent == _startParent)
                 {
                     _moveAnimation.SetStartPositionAsCurrentLocalPosition();
-                    _moveAnimation.SetEndPosition(startPosition);
+                    _moveAnimation.SetEndPosition(_startPosition);
                     _moveAnimation.Play();
 
                     _scaleAnimation.SetStartScaleAsCurrentScale();
@@ -118,19 +116,26 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void ActionResolved(bool win)
         {
-            _moveAnimation.SetStartPositionAsCurrentLocalPosition();
-            _moveAnimation.SetEndPosition(startPosition);
-            _moveAnimation.Play();
+            //_moveAnimation.SetStartPositionAsCurrentLocalPosition();
+            //_moveAnimation.SetEndPosition(startPosition);
+            //_moveAnimation.Play();
 
-            _scaleAnimation.SetStartScaleAsCurrentScale();
-            _scaleAnimation.SetEndValue(1);
-            _scaleAnimation.Play();
+            //_scaleAnimation.SetStartScaleAsCurrentScale();
+            //_scaleAnimation.SetEndValue(1);
+            //_scaleAnimation.Play();
+
+            CombatController.Instance.PlayerCharacter.OnActionResolved -= ActionResolved;
+
+            if (win) {
+                EffectsManager.Instance.AddEffect(_hideWinAnimation);
+            } else {
+                EffectsManager.Instance.AddEffect(_hideLoseAnimation);
+            }
         }
 
         public void PlayAction()
         {
-            Transform.parent = startParent;
-            _action.OnActionResolved += ActionResolved;
+            CombatController.Instance.PlayerCharacter.OnActionResolved += ActionResolved;
             CombatController.Instance.PlayerCharacter.PlayAction(Action);
         }
     }

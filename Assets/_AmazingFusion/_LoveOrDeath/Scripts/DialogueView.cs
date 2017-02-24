@@ -27,6 +27,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         public void SetText(CharacterAction.ActionResult result) {
             switch (result) {
                 case CharacterAction.ActionResult.None:
+                    //SmartLocalization.LanguageManager.Instance.
                     _text.text = "Nadie gana";
                     break;
                 case CharacterAction.ActionResult.Win:
