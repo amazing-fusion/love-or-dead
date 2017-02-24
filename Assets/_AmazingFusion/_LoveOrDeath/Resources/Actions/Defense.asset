@@ -18,3 +18,4 @@ MonoBehaviour:
   _energyCost: 2
   _energyEarned: 0
   _damage: 10
+  _sprite: {fileID: 21300000, guid: 5e7a8aa0e59bcba4aa601531d30b7ab5, type: 3}
