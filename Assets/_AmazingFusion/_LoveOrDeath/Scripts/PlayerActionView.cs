@@ -49,7 +49,7 @@ namespace com.AmazingFusion.LoveOrDeath
         void Awake()
         {
             _startParent = Transform.parent;
-            _startPosition = Vector3.zero;
+            _startPosition = Transform.localPosition;
 
             CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => { _canDrag = false; };
             /*
@@ -58,8 +58,8 @@ namespace com.AmazingFusion.LoveOrDeath
             PlayerView.Instance.OnValuesChanged += () => {
                 _canDrag = true;
                 Transform.parent = _startParent;
-                ((RectTransform)Transform).sizeDelta = ((RectTransform)Transform.parent).sizeDelta;
                 Transform.localScale = Vector3.one;
+                ((RectTransform)Transform).sizeDelta = ((RectTransform)Transform.parent).sizeDelta;
                 Transform.localPosition = _startPosition;
             };
         }
