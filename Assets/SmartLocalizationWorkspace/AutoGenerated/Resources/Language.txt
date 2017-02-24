@@ -131,8 +131,17 @@
 	<data name="Speech.Both.Daga" xml:space="preserve">
 		<value>Eso de ahí es una daga o es que te alegras de verme?</value>
 	</data>
+	<data name="Speech.Both.GuerraEspaditas" xml:space="preserve">
+		<value>Ya veo que quieres jugar guerra de espaditas.</value>
+	</data>
+	<data name="Speech.Both.Peli" xml:space="preserve">
+		<value>Ven a mi casa a ver una peli jeje</value>
+	</data>
 	<data name="Speech.Both.PenetrarEspada" xml:space="preserve">
 		<value>Quiero que me penetres con tu espada.</value>
+	</data>
+	<data name="Speech.Both.UsoLengua" xml:space="preserve">
+		<value>Pelear quizá no... pero tu no sabes lo que domino yo de lengua.</value>
 	</data>
 	<data name="Speech.Lose.Carne" xml:space="preserve">
 		<value>Eso es carne y no lo que le echa mi madre al cocido.</value>
@@ -194,10 +203,16 @@
 	<data name="Speech.Win.InfinidadMusculos" xml:space="preserve">
 		<value>Me gustaria perderme entre la infinidad de tus musculos</value>
 	</data>
+	<data name="Speech.Win.OjosAzabache" xml:space="preserve">
+		<value>¿Como vas a matar a nadie con esos preciosos ojos color azabache?</value>
+	</data>
 	<data name="Speech.Win.Trucha" xml:space="preserve">
 		<value>Te quiero como la trucha al trucho.</value>
 	</data>
-	<data name="Speech.Both.GuerraEspaditas" xml:space="preserve">
-		<value>Ya veo que quieres jugar guerra de espaditas.</value>
+	<data name="Speech.Win.Uva" xml:space="preserve">
+		<value>¿Ese bronceado es natural o haces uva?</value>
+	</data>
+	<data name="Speech.Win.MorirLabios" xml:space="preserve">
+		<value>No quiero morir sin antes haber probado tus carnosos labios.</value>
 	</data>
 </root>
