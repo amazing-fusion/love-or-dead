@@ -29,13 +29,21 @@ namespace com.AmazingFusion.LoveOrDeath {
             }
         }
 
-public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved;public PlayerCharacterController PlayerCharacter
+        public PlayerCharacterController PlayerCharacter
         {
             get
             {
                 return _playerCharacter;
             }
         }
+
+        public AICharacterController RivalCharacter {
+            get {
+                return _rivalCharacter;
+            }
+        }
+
+        public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved;
 
         void Start()
         {
@@ -90,32 +98,41 @@ public event System.Action<CharacterAction.ActionResult> OnCombatActionsResolved
 
             switch (actionResult) {
                 case CharacterAction.ActionResult.None:
-                    playerAction.ActionResolved(false);
-                    rivalAction.ActionResolved(false);
+                    _playerCharacter.ActionResolved(false);
+                    _rivalCharacter.ActionResolved(false);
 
                     break;
                 case CharacterAction.ActionResult.Win:
-                    playerAction.ActionResolved(true);
-                    rivalAction.ActionResolved(false);
+                    _playerCharacter.ActionResolved(true);
+                    _rivalCharacter.ActionResolved(false);
 
                     _rivalCharacter.CurrentLife -= playerAction.Damage;
 
                     break;
                 case CharacterAction.ActionResult.Lose:
-                    playerAction.ActionResolved(false);
-                    rivalAction.ActionResolved(true);
+                    _playerCharacter.ActionResolved(false);
+                    _rivalCharacter.ActionResolved(true);
 
                     _playerCharacter.CurrentLife -= rivalAction.Damage;
 
                     break;
                 case CharacterAction.ActionResult.Both:
-                    playerAction.ActionResolved(true);
-                    rivalAction.ActionResolved(true);
+                    _playerCharacter.ActionResolved(true);
+                    _rivalCharacter.ActionResolved(true);
 
                     _rivalCharacter.CurrentLife -= playerAction.Damage;
                     _playerCharacter.CurrentLife -= rivalAction.Damage;
 
                     break;
+            }
+
+            if (playerAction.Type == CharacterAction.ActionType.Ultimate) {
+                _playerCharacter.UltimateCounter = 0;
+
+            } else if (playerAction.Type == CharacterAction.ActionType.Offensive && rivalAction.Type == CharacterAction.ActionType.Energetic ||
+                    playerAction.Type == CharacterAction.ActionType.Defensive && rivalAction.Type == CharacterAction.ActionType.Offensive) {
+
+                ++_playerCharacter.UltimateCounter;
             }
 
             _playerCharacter.CurrentEnergy += playerAction.EnergyEarned;

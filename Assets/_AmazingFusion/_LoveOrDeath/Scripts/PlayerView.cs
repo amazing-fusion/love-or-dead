@@ -19,6 +19,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         public event Action OnValuesChanged;
 
         void Start() {
+            CombatController.Instance.PlayerCharacter.OnInitialized += Initialize;
+
             DialogueView.Instance.OnClose += SetPlayerValues;
         }
 
@@ -35,7 +37,7 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             _ultimateAnimation.SetStartValueAsCurrentValue();
             _ultimateAnimation.MaxValue = CombatController.Instance.PlayerCharacter.UltimateActivationSuccess;
-            _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.UltimateCounter);
+            _ultimateAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.UltimateCounter);
 
             _ultimateAnimation.OnEnd += ValuesChanged;
 
