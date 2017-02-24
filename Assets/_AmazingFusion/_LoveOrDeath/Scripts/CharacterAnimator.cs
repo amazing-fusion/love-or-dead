@@ -5,6 +5,7 @@ using UnityEngine;
 namespace com.AmazingFusion.LoveOrDeath {
     public class CharacterAnimator : OptimizedBehaviour {
 
+        [SerializeField]
         Animator _animator;
 
         public void PlayIdleAnimation()

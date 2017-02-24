@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MovementEffects;
 
 namespace com.AmazingFusion.LoveOrDeath {
     public class CombatController : Singleton<CombatController> {
@@ -13,6 +14,9 @@ namespace com.AmazingFusion.LoveOrDeath {
 
         [SerializeField]
         AICharacterController _rivalCharacter;
+
+        [SerializeField]
+        CharacterAnimator _animatorController;
 
         int _turn;
 
@@ -154,16 +158,33 @@ namespace com.AmazingFusion.LoveOrDeath {
                 }
             }
         }
+        
+        IEnumerator <float> DoEndCombat(bool combatResult)
+        {
+            _animatorController.PlayKissAnimation();
+            yield return Timing.WaitForSeconds(2);
+
+            if (CheckKissVictoryCondition())
+            {
+                _animatorController.PlayKissWinAnimation();
+            }
+            else
+            {
+                _animatorController.PlayKissLoseAnimation();
+            }
+            yield return Timing.WaitForSeconds(2);
+            EndCombat(combatResult);
+        }
 
         public void Kiss()
         {
             if(CheckKissVictoryCondition())
             {
-                EndCombat(true);
+                Timing.RunCoroutine(DoEndCombat(true));
             }
             else
             {
-                EndCombat(false);
+                Timing.RunCoroutine(DoEndCombat(false));
             }
         }
     }

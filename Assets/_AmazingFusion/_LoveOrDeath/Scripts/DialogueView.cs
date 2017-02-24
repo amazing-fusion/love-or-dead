@@ -52,6 +52,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         public void Close() {
             _closeAnimation.OnEnd += Closed;
             _closeAnimation.Play();
+
+            _animatorController.PlayIdleAnimation();
         }
 
         void Closed(IEffectable effect) {
