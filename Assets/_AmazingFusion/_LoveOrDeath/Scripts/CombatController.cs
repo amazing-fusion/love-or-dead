@@ -57,7 +57,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             AudioController.Instance.PlayMenuMusic();
         }
         public event System.Action OnCombatStart;
-        public event System.Action OnCombatEnd;
+        public event System.Action<bool> OnCombatEnd;
 
         public event System.Action OnTurnChange;
 
@@ -78,7 +78,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
 
-        void StartCombat() {
+        public void StartCombat() {
             Turn = _maxTurns;
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
@@ -87,7 +87,7 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         void EndCombat(bool win) {
-            if (OnCombatEnd != null) OnCombatEnd();
+            if (OnCombatEnd != null) OnCombatEnd(win);
         }
 
         public void PlayAction(CharacterAction playerAction) {

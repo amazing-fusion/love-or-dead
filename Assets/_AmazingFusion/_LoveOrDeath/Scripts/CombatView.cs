@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour {
+namespace com.AmazingFusion.LoveOrDeath {
+    public class CombatView : OptimizedBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        [SerializeField]
+        TMP_Text _turnText;
+
+        // Use this for initialization
+        void Start() {
+            _turnText.text = CombatController.Instance.Turn.ToString();
+
+            DialogueView.Instance.OnClose += () => {
+                _turnText.text = CombatController.Instance.Turn.ToString();
+            };
+        }
+    }
 }
