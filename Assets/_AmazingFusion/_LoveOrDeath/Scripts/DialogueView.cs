@@ -35,18 +35,53 @@ namespace com.AmazingFusion.LoveOrDeath {
             _loseSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Lose.");
             _bothSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Both.");
 
+            //_showAnimation.OnEnd += 
+
             CombatController.Instance.OnCombatActionsResolved += (CharacterAction action, CharacterAction.ActionResult result) => {
                 SetText(action, result);
                 EffectsManager.Instance.AddEffect(_showAnimation);
             };
         }
 
+        public void AnimationsAndSounds(CharacterAction action, CharacterAction.ActionResult result)
+        {
+            switch (result)
+            {
+                case CharacterAction.ActionResult.None:
+                    _animatorController.PlayNoneDamageAnimation();
+                    break;
+                case CharacterAction.ActionResult.Win:
+                    if (action.Type == CharacterAction.ActionType.Ultimate)
+                    {
+                        AudioController.Instance.PlayRivalLovingSound();
+                    }
+                    else
+                    {
+                        AudioController.Instance.PlayRivalLovingSound();
+                    }
+                    _animatorController.PlayRivalLovingAnimation();
+                    break;
+                case CharacterAction.ActionResult.Lose:
+
+                    AudioController.Instance.PlayRivalHitSound();
+                    _animatorController.PlayRivalHitAnimation();
+                    break;
+                case CharacterAction.ActionResult.Both:
+                    
+                    _animatorController.PlayBothAttackAnimation();
+                    break;
+            }
+        }
+
         public void SetText(CharacterAction action, CharacterAction.ActionResult result) {
+
+            AudioController.Instance.PlayPublicEuphoricSound();
+
             switch (result) {
                 case CharacterAction.ActionResult.None:
                     //SmartLocalization.LanguageManager.Instance.
                     _text.text = LanguageManager.Instance.GetTextValue(_noneSpeech[Random.Range(0, _noneSpeech.Count)]);
-                    _animatorController.PlayNoneDamageAnimation();
+                  //  _animatorController.PlayNoneDamageAnimation();
                     break;
                 case CharacterAction.ActionResult.Win:
                     if (action.Type == CharacterAction.ActionType.Ultimate) {
@@ -54,15 +89,15 @@ namespace com.AmazingFusion.LoveOrDeath {
                     } else {
                         _text.text = LanguageManager.Instance.GetTextValue(_winSpeech[Random.Range(0, _winSpeech.Count)]);
                     }
-                    _animatorController.PlayRivalLovingAnimation();
+                    //_animatorController.PlayRivalLovingAnimation();
                     break;
                 case CharacterAction.ActionResult.Lose:
                     _text.text = LanguageManager.Instance.GetTextValue(_loseSpeech[Random.Range(0, _loseSpeech.Count)]);
-                    _animatorController.PlayRivalHitAnimation();
+                    //_animatorController.PlayRivalHitAnimation();
                     break;
                 case CharacterAction.ActionResult.Both:
                     _text.text = LanguageManager.Instance.GetTextValue(_bothSpeech[Random.Range(0, _bothSpeech.Count)]);
-                    _animatorController.PlayBothAttackAnimation();
+                   // _animatorController.PlayBothAttackAnimation();
                     break;
             }
         }

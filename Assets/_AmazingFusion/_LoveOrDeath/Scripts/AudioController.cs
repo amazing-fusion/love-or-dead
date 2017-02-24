@@ -71,6 +71,7 @@ namespace com.AmazingFusion.LoveOrDeath
         AudioSource _musicSource;
         AudioSource _uiFxSource;
         AudioSource _gameFxSource;
+        AudioSource _musicPublic;
 
         #endregion
 
@@ -80,6 +81,9 @@ namespace com.AmazingFusion.LoveOrDeath
 
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.loop = true;
+
+            _musicPublic = gameObject.AddComponent<AudioSource>();
+            _musicPublic.loop = true;
 
             _uiFxSource = gameObject.AddComponent<AudioSource>();
             _gameFxSource = gameObject.AddComponent<AudioSource>();
@@ -104,6 +108,13 @@ namespace com.AmazingFusion.LoveOrDeath
             _musicSource.Stop();
             _musicSource.clip = music;
             _musicSource.Play();
+        }
+
+        public void PlayPublicMusic(AudioClip music)
+        {
+            _musicPublic.Stop();
+            _musicPublic.clip = music;
+            _musicPublic.Play();
         }
 
         public void PlayUISound(AudioClip sound)
@@ -146,7 +157,7 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void PlayMenuMusic()
         {
-            PlayMusic(_menuMusicClip);
+            PlayPublicMusic(_publicIdleSoundClip);
         }
 
         #endregion

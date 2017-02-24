@@ -24,6 +24,7 @@ namespace com.AmazingFusion.LoveOrDeath
         {
             if (_slotDrag && PlayerActionView.cardBeingDragged != null)
             {
+                AudioController.Instance.PlayDropUISound();
                 PlayerActionView.cardBeingDragged.Transform.SetParent(Transform.parent.GetChild(0), true);
                 ((RectTransform)PlayerActionView.cardBeingDragged.Transform).sizeDelta = ((RectTransform)PlayerActionView.cardBeingDragged.Transform.parent).sizeDelta;
                 PlayerActionView.cardBeingDragged.Transform.localScale = Vector3.one;

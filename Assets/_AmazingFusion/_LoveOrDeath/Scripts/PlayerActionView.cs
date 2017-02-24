@@ -68,6 +68,8 @@ namespace com.AmazingFusion.LoveOrDeath
         {
             if (_canDrag && CombatController.Instance.PlayerCharacter.CanPlayAction(Action))
             {
+                AudioController.Instance.PlayBeginDragUISound();
+
                 _dragging = true;
                 cardBeingDragged = this;
 

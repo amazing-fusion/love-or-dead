@@ -52,6 +52,9 @@ namespace com.AmazingFusion.LoveOrDeath {
         void Start()
         {
             StartCombat();
+
+            AudioController.Instance.PlayCombatMusic();
+            AudioController.Instance.PlayMenuMusic();
         }
         public event System.Action OnCombatStart;
         public event System.Action OnCombatEnd;
@@ -162,6 +165,8 @@ namespace com.AmazingFusion.LoveOrDeath {
         IEnumerator <float> DoEndCombat(bool combatResult)
         {
             _animatorController.PlayKissAnimation();
+            AudioController.Instance.PlayKissUISound();
+
             yield return Timing.WaitForSeconds(2);
 
             if (CheckKissVictoryCondition())
@@ -169,12 +174,14 @@ namespace com.AmazingFusion.LoveOrDeath {
                 Debug.Log("Life enemy " + _rivalCharacter.CurrentLife + " Loving " + _rivalCharacter.LovingLife);
                 Debug.Log(CheckKissVictoryCondition());
                 _animatorController.PlayKissWinAnimation();
+                AudioController.Instance.PlayRivalKissWinSound();
             }
             else
             {
                 Debug.Log("Life enemy " + _rivalCharacter.CurrentLife + " Loving " + _rivalCharacter.LovingLife);
                 Debug.Log(CheckKissVictoryCondition());
                 _animatorController.PlayKissLoseAnimation();
+                AudioController.Instance.PlayRivalKissLoseSound();
             }
             yield return Timing.WaitForSeconds(2);
             EndCombat(combatResult);
