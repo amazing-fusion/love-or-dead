@@ -732,70 +732,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1633013074154170, guid: fe191df508feb174fba940b937f980f9,
     type: 2}
   m_PrefabInternal: {fileID: 784521279}
---- !u!1 &535691873
+--- !u!1 &535691873 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 535691875}
-  - component: {fileID: 535691874}
-  m_Layer: 0
-  m_Name: Global
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &535691874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 535691873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31880f5b59d34b419f312210cabb009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combatMusicClip: {fileID: 8300000, guid: 30284fb50c6271f44bc1b6d31cd13a77, type: 3}
-  _victoryMusicClip: {fileID: 8300000, guid: 450bbbc9450595c45a6662ea55688590, type: 3}
-  _menuMusicClip: {fileID: 0}
-  _defeatMusicClip: {fileID: 8300000, guid: 13abfb863b5e7fa428da200dfac812ad, type: 3}
-  _playerTalkingSoundClip: {fileID: 0}
-  _rivalLovingSoundClip: {fileID: 8300000, guid: 65a79b0c73a8d0b4a8d3214f352e0daf,
-    type: 3}
-  _rivalHitSoundClip: {fileID: 8300000, guid: ccdd195f830f86445ab93f9109d608cc, type: 3}
-  _rivalKissLoseSoundClip: {fileID: 8300000, guid: b20e6f7d759bfbc479de0bf24e2c4dd5,
-    type: 3}
-  _rivalKissWinSoundClip: {fileID: 8300000, guid: 90199e2cf73126b49a2de444610ad66c,
-    type: 3}
-  _publicEuphoricSoundClip: {fileID: 8300000, guid: b47e4832d94be9848919ebcfacc64b27,
-    type: 3}
-  _publicIdleSoundClip: {fileID: 8300000, guid: 1ae882eb2a7f3e74d867dd7e9289027d,
-    type: 3}
-  _playerDiyingSoundClip: {fileID: 8300000, guid: 06ed1fb76f4fb86428db1f688f433bb0,
-    type: 3}
-  _beginDragSoundClip: {fileID: 8300000, guid: 82a0e565572a028408c1ec1b2dc0d45e, type: 3}
-  _dropSoundClip: {fileID: 8300000, guid: 9a9434c5712105648bbd4a01d10c6277, type: 3}
-  _ultimateReadySoundClip: {fileID: 8300000, guid: a952b6a5f4539604490893470f9830cb,
-    type: 3}
-  _kissSoundClip: {fileID: 8300000, guid: 99a646e467e4da446b51d5307e6787aa, type: 3}
-  _cardWinSoundClip: {fileID: 8300000, guid: c71bf2b301726b441b69ec2fad222dfb, type: 3}
---- !u!4 &535691875
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 535691873}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_PrefabParentObject: {fileID: 1869773752595960, guid: 75c9489ebc12b224c9f6a8fd3327883c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1138501147}
 --- !u!1 &538784552 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1485996783794910, guid: 729dadb0102f2564caa73b06b6df2517,
@@ -1895,6 +1836,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1126816648}
+--- !u!1001 &1138501147
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379192158963750, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 75c9489ebc12b224c9f6a8fd3327883c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1167275160 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1844452235385666, guid: 729dadb0102f2564caa73b06b6df2517,
@@ -2368,6 +2351,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038557925419876, guid: 729dadb0102f2564caa73b06b6df2517, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 729dadb0102f2564caa73b06b6df2517, type: 2}
