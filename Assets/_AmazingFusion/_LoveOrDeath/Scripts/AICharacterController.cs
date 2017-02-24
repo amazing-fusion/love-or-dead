@@ -74,6 +74,7 @@ namespace com.AmazingFusion.LoveOrDeath {
                     }
                     else
                     {
+                        print("Entro por que tengo energia");
                         action = temActionList[random];
                         _pattern.Add(action);
                         break;
