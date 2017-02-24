@@ -49,6 +49,7 @@ namespace com.AmazingFusion.LoveOrDeath
         void Awake()
         {
             _startParent = Transform.parent;
+            _startPosition = Vector3.zero;
 
             CombatController.Instance.PlayerCharacter.OnActionPicked += (CharacterAction action) => { _canDrag = false; };
             /*
@@ -73,8 +74,8 @@ namespace com.AmazingFusion.LoveOrDeath
                 _dragging = true;
                 cardBeingDragged = this;
 
-                _startPosition = Transform.localPosition;
-                _startParent = Transform.parent;
+                //_startPosition = Vector3.zero;
+                //_startParent = Transform.parent;
 
                 GetComponent<CanvasGroup>().blocksRaycasts = false;
 
