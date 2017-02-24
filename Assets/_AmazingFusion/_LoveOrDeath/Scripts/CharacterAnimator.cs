@@ -40,12 +40,12 @@ namespace com.AmazingFusion.LoveOrDeath {
 
         public void PlayKissWinAnimation()
         {
-            _animator.SetInteger("_state", 6);
+            _animator.SetInteger("_state", 7);
         }
 
         public void PlayKissLoseAnimation()
         {
-            _animator.SetInteger("_state", 7);
+            _animator.SetInteger("_state", 6);
         }
     }
 }

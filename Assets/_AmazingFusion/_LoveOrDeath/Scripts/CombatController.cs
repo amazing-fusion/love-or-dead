@@ -166,10 +166,14 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             if (CheckKissVictoryCondition())
             {
+                Debug.Log("Life enemy " + _rivalCharacter.CurrentLife + " Loving " + _rivalCharacter.LovingLife);
+                Debug.Log(CheckKissVictoryCondition());
                 _animatorController.PlayKissWinAnimation();
             }
             else
             {
+                Debug.Log("Life enemy " + _rivalCharacter.CurrentLife + " Loving " + _rivalCharacter.LovingLife);
+                Debug.Log(CheckKissVictoryCondition());
                 _animatorController.PlayKissLoseAnimation();
             }
             yield return Timing.WaitForSeconds(2);
