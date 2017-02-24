@@ -631,7 +631,7 @@ MonoBehaviour:
   _maxEnergy: 20
   _initialEnergy: 5
   _initialPatternLength: 5
-  _lovingLife: 20
+  _lovingLife: 40
 --- !u!114 &409995739
 MonoBehaviour:
   m_ObjectHideFlags: 0
