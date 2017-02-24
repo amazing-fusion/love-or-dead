@@ -9,82 +9,60 @@ namespace com.AmazingFusion.LoveOrDeath
 
         [Header("Music")]
         [SerializeField]
-        AudioClip _townMusicClip;
-
-        /*[Header("UI General Sounds")]
-        [SerializeField]
-        AudioClip _optionSoundClip;
+        AudioClip _combatMusicClip;
 
         [SerializeField]
-        AudioClip _openSettingsSoundClip;
+        AudioClip _victoryMusicClip;
 
         [SerializeField]
-        AudioClip _closeSettingsSoundClip;*/
-
-        [Header("General")]
-        [SerializeField]
-        AudioClip _levelUpSoundClip;
-        /*[SerializeField]
-        AudioClip _experienceUpSoundClip;
-        [SerializeField]
-        AudioClip _softCurrencyEarnedSoundClip;
-        [SerializeField]
-        AudioClip _hardCurrencyEarnedSoundClip;*/
-
-        [Header("Items production Sounds")]
-        //[SerializeField]
-        //AudioClip _addWorkerItemsProductionSoundClip;
-
-        //[SerializeField]
-        //AudioClip _removeWorkerItemsProductionSoundClip;
+        AudioClip _menuMusicClip;
 
         [SerializeField]
-        AudioClip _warningItemsProductionSoundClip;
+        AudioClip _defeatMusicClip;
+
+        [Header("Sonido")]
+        [SerializeField]
+        AudioClip _playerTalkingSoundClip;
 
         [SerializeField]
-        AudioClip _collectItemsProductionSoundClip;
-
-        [Header("Orders Board Sounds")]
-        [SerializeField]
-        AudioClip _openOrdersBoardSoundClip;
+        AudioClip _rivalLovingSoundClip;
 
         [SerializeField]
-        AudioClip _closeOrdersBoardSoundClip;
+        AudioClip _rivalHitSoundClip;
 
         [SerializeField]
-        AudioClip _selectOrdersBoardSoundClip;
+        AudioClip _rivalKissLoseSoundClip;
 
         [SerializeField]
-        AudioClip _unselectOrdersBoardSoundClip;
+        AudioClip _rivalKissWinSoundClip;
 
         [SerializeField]
-        AudioClip _completeOrdersBoardSoundClip;
+        AudioClip _publicEuphoricSoundClip;
 
         [SerializeField]
-        AudioClip _recycleOrdersBoardSoundClip;
-
-        [Header("Building Sounds")]
-        [SerializeField]
-        AudioClip _openBuildingPanelSoundClip;
+        AudioClip _publicIdleSoundClip;
 
         [SerializeField]
-        AudioClip _closeBuildingPanelSoundClip;
+        AudioClip _playerDiyingSoundClip;
+
+        [Header("Sonido UI")] 
 
         [SerializeField]
-        AudioClip _selectTabBuildingPanelSoundClip;
+        AudioClip _beginDragSoundClip;
 
         [SerializeField]
-        AudioClip _warningBuildingPanelSoundClip;
+        AudioClip _dropSoundClip;
 
         [SerializeField]
-        AudioClip _startBuildingSoundClip;
-
-        [Header("Editing Mode Sounds")]
-        [SerializeField]
-        AudioClip _startEditingModeSoundClip;
+        AudioClip _ultimateReadySoundClip;
 
         [SerializeField]
-        AudioClip _endEditingModeSoundClip;
+        AudioClip _kissSoundClip;
+
+        [SerializeField]
+        AudioClip _cardWinSoundClip;
+
+
 
         #endregion;
 
@@ -151,158 +129,98 @@ namespace com.AmazingFusion.LoveOrDeath
 
         #region Music
 
-        public void PlayVillageGameMusic()
+        public void PlayCombatMusic()
         {
-            PlayMusic(_townMusicClip);
+            PlayMusic(_combatMusicClip);
+        }
+
+        public void PlayVictoryMusic()
+        {
+            PlayMusic(_victoryMusicClip);
+        }
+
+        public void PlayDefeatMusic()
+        {
+            PlayMusic(_defeatMusicClip);
+        }
+
+        public void PlayMenuMusic()
+        {
+            PlayMusic(_menuMusicClip);
         }
 
         #endregion
 
         #region UI Sounds
-
-        #region UI General Sounds
-        /*public void PlayOptionSound()
+        
+        public void PlayBeginDragUISound()
         {
-            PlayUISound(_optionSoundClip);
+            PlayUISound(_beginDragSoundClip);
         }
 
-        public void PlayOpenSettingsSound()
+        public void PlayDropUISound()
         {
-            PlayUISound(_openSettingsSoundClip);
+            PlayUISound(_dropSoundClip);
         }
 
-        public void PlayCloseSettingsSound()
+        public void PlayUltimateReadyUISound()
         {
-            PlayUISound(_closeSettingsSoundClip);
-        }*/
-
-        public void PlayLevelUpSound()
-        {
-            PlayUISound(_levelUpSoundClip);
+            PlayUISound(_ultimateReadySoundClip);
         }
 
-        /*public void PlayExperienceUpSound()
+        public void PlayKissUISound()
         {
-            PlayUISound(_experienceUpSoundClip);
+            PlayUISound(_kissSoundClip);
         }
 
-        public void PlaySoftCurrencyEarnedSound()
+        public void PlayCardWinUISound()
         {
-            PlayUISound(_softCurrencyEarnedSoundClip);
+            PlayUISound(_cardWinSoundClip);
         }
-
-        public void PlayHardCurrencyEarnedSound()
-        {
-            PlayUISound(_hardCurrencyEarnedSoundClip);
-        }*/
-
-        #endregion
-
-        #region Items Production Sounds
-
-        //public void PlayAddWorkerItemsProductionSound()
-        //{
-        //    PlayUISound(_addWorkerItemsProductionSoundClip);
-        //}
-
-        //public void PlayRemoveWorkerItemsProductionSound()
-        //{
-        //    PlayUISound(_removeWorkerItemsProductionSoundClip);
-        //}
-
-        public void PlayWarningItemsProductionSound()
-        {
-            PlayUISound(_warningItemsProductionSoundClip);
-        }
-
-        public void PlayCollectItemsProductionSound()
-        {
-            PlayUISound(_collectItemsProductionSoundClip);
-        }
-
-        #endregion
-
-        #region Orders Board Sounds
-
-        public void PlayOpenOrdersBoardSound()
-        {
-            PlayUISound(_openOrdersBoardSoundClip);
-        }
-
-        public void PlayCloseOrdersBoardSound()
-        {
-            PlayUISound(_closeOrdersBoardSoundClip);
-        }
-
-        public void PlaySelectOrdersBoardSound()
-        {
-            PlayUISound(_selectOrdersBoardSoundClip);
-        }
-
-        public void PlayUnselectOrdersBoardSound()
-        {
-            PlayUISound(_unselectOrdersBoardSoundClip);
-        }
-
-        public void PlayCompleteOrdersBoardSound()
-        {
-            PlayUISound(_completeOrdersBoardSoundClip);
-        }
-
-        public void PlayRecycleOrdersBoardSound()
-        {
-            PlayUISound(_recycleOrdersBoardSoundClip);
-        }
-
-        #endregion
-
-        #region Editing Mode
-
-        public void PlayStartEditingModeSound()
-        {
-            PlayUISound(_startEditingModeSoundClip);
-        }
-
-        public void PlayEndEditingModeSound()
-        {
-            PlayUISound(_endEditingModeSoundClip);
-        }
-
-        #endregion
-
-        #region Building Panel Sounds
-
-        public void PlayOpenBuildingPanelSound()
-        {
-            PlayUISound(_openBuildingPanelSoundClip);
-        }
-
-        public void PlayCloseBuildingPanelSound()
-        {
-            PlayUISound(_closeBuildingPanelSoundClip);
-        }
-
-        public void PlaySelectTabBuildingPanelSound()
-        {
-            PlayUISound(_selectTabBuildingPanelSoundClip);
-        }
-
-        public void PlayWarningBuildingPanelSound()
-        {
-            PlayUISound(_warningBuildingPanelSoundClip);
-        }
-
-        public void PlayStartBuildingSound()
-        {
-            PlayUISound(_startBuildingSoundClip);
-        }
-
-        #endregion
 
         #endregion
 
         #region Game Sounds
 
+        public void PlayPlayerTalkSound()
+        {
+            PlayGameSound(_playerTalkingSoundClip);
+        }
+
+        public void PlayRivalLovingSound()
+        {
+            PlayGameSound(_rivalLovingSoundClip);
+        }
+
+        public void PlayRivalHitSound()
+        {
+            PlayGameSound(_rivalHitSoundClip);
+        }
+
+        public void PlayRivalKissLoseSound()
+        {
+            PlayGameSound(_rivalKissLoseSoundClip);
+        }
+
+        public void PlayRivalKissWinSound()
+        {
+            PlayGameSound(_rivalKissWinSoundClip);
+        }
+
+        public void PlayPublicEuphoricSound()
+        {
+            PlayGameSound(_publicEuphoricSoundClip);
+        }
+
+        public void PlayPublicIdleSound()
+        {
+            PlayGameSound(_publicIdleSoundClip);
+        }
+
+        public void PlayPlayerDiyingSound()
+        {
+            PlayGameSound(_playerDiyingSoundClip);
+        }
 
         #endregion
     }
