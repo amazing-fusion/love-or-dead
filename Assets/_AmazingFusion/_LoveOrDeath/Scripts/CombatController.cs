@@ -83,6 +83,8 @@ namespace com.AmazingFusion.LoveOrDeath {
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
 
+            _animatorController.PlayIdleAnimation();
+
             if (OnCombatStart != null) OnCombatStart();
         }
 
