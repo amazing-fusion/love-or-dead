@@ -22,11 +22,21 @@ namespace com.AmazingFusion.LoveOrDeath {
         CharacterAction _characterAction;
         CharacterAction.ActionResult _result;
 
+		Vector3 _startPosition;
+
         List<string> _ultimateSpeech;
         List<string> _noneSpeech;
         List<string> _winSpeech;
         List<string> _loseSpeech;
         List<string> _bothSpeech;
+
+		public Vector3 StartPosition{
+
+			get{ 
+				return _startPosition;
+			
+			}
+		}
 
         public event System.Action OnClose;
 
@@ -38,6 +48,8 @@ namespace com.AmazingFusion.LoveOrDeath {
             _loseSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Lose.");
             _bothSpeech = LanguageManager.Instance.GetKeysWithinCategory("Speech.Both.");
 
+			_startPosition = Transform.localPosition;
+
             _showAnimation.OnEnd += (IEffectable effect) => { AnimationsAndSounds(); };   
 
             CombatController.Instance.OnCombatActionsResolved += (CharacterAction action, CharacterAction.ActionResult result) => {
@@ -46,7 +58,14 @@ namespace com.AmazingFusion.LoveOrDeath {
                 SetText(action, result);
                 EffectsManager.Instance.AddEffect(_showAnimation);
             };
+
+			CombatController.Instance.OnCombatStart += () => {InizialicePosition(); };
         }
+
+		public void InizialicePosition(){
+		
+			Transform.localPosition = _startPosition;
+		}
 
         public void AnimationsAndSounds()
         {
@@ -112,6 +131,7 @@ namespace com.AmazingFusion.LoveOrDeath {
             _closeAnimation.Play();
 
             _animatorController.PlayIdleAnimation();
+		
         }
 
         void Closed(IEffectable effect) {

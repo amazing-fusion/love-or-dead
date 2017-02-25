@@ -16,6 +16,9 @@ namespace com.AmazingFusion.LoveOrDeath {
         [SerializeField]
         FillAmountImageEasingAnimation _ultimateAnimation;
 
+		[SerializeField]
+		TextValueEasingAnimation _turnAnimation;
+
         public event Action OnValuesChanged;
 
         void Start() {
@@ -29,11 +32,15 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
 
         void SetPlayerValues() {
+			
             _lifeAnimation.SetStartValueAsCurrentValue();
             _lifeAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentLife);
 
             _energyAnimation.SetStartValueAsCurrentValue();
             _energyAnimation.SetEndValue(CombatController.Instance.PlayerCharacter.CurrentEnergy);
+
+			_turnAnimation.SetStartValueAsCurrentValue();
+			_turnAnimation.SetEndValue(CombatController.Instance.Turn);
 
             _ultimateAnimation.SetStartValueAsCurrentValue();
             _ultimateAnimation.MaxValue = CombatController.Instance.PlayerCharacter.UltimateActivationSuccess;
@@ -41,9 +48,20 @@ namespace com.AmazingFusion.LoveOrDeath {
 
             _energyAnimation.OnEnd += ValuesChanged;
 
+			_turnAnimation.Play ();
             _lifeAnimation.Play();
             _energyAnimation.Play();
             _ultimateAnimation.Play();
+
+
+
+			if (CombatController.Instance.CheckPlayerLifeEndCondition() || CombatController.Instance.CheckRivalLifeEndCondition()) {
+				CombatController.Instance.StartTurn (false);
+			} 
+
+			if (CombatController.Instance.CheckTurnEndCondition ()) {
+				CombatController.Instance.StartTurn (false);
+			}
         }
 
         void ValuesChanged(IEffectable effect) {

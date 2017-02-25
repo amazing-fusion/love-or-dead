@@ -58,18 +58,19 @@ namespace com.AmazingFusion.LoveOrDeath {
         }
         public event System.Action OnCombatStart;
         public event System.Action<bool> OnCombatEnd;
+		public event System.Action <bool> OnStartTurn;
 
         public event System.Action OnTurnChange;
 
-        bool CheckTurnEndCondition() {
+        public bool CheckTurnEndCondition() {
             return _turn <= 0;
         }
 
-        bool CheckPlayerLifeEndCondition() {
+        public bool CheckPlayerLifeEndCondition() {
             return _playerCharacter.CurrentLife <= 0;
         }
 
-        bool CheckRivalLifeEndCondition() {
+        public bool CheckRivalLifeEndCondition() {
             return _rivalCharacter.CurrentLife <= 0;
         }
 
@@ -79,7 +80,9 @@ namespace com.AmazingFusion.LoveOrDeath {
 
 
         public void StartCombat() {
-            Turn = _maxTurns;
+			
+			_turn = _maxTurns;
+			_playerCharacter.UltimateCounter = 0;
             _playerCharacter.Initialize();
             _rivalCharacter.Initialize();
 
@@ -93,6 +96,10 @@ namespace com.AmazingFusion.LoveOrDeath {
         void EndCombat(bool win) {
             if (OnCombatEnd != null) OnCombatEnd(win);
         }
+
+		public void StartTurn(bool win){
+			if(OnStartTurn != null)OnStartTurn(win);
+		}
 
         public void PlayAction(CharacterAction playerAction) {
 
@@ -157,12 +164,11 @@ namespace com.AmazingFusion.LoveOrDeath {
             if (OnCombatActionsResolved != null) OnCombatActionsResolved(playerAction, actionResult);
 
             if (CheckPlayerLifeEndCondition() || CheckRivalLifeEndCondition()) {
-                EndCombat(false);
-            } else {
+            
+			} 
+			else 
+			{
                 --Turn;
-                if (CheckTurnEndCondition()) {
-                    EndCombat(false);
-                }
             }
         }
         

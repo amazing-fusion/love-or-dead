@@ -23,6 +23,17 @@ namespace com.AmazingFusion.LoveOrDeath
                     AudioController.Instance.PlayPlayerDiyingSound();
                 }
             };
+
+			CombatController.Instance.OnStartTurn += (bool win) => {
+				if (win) {
+					_victoryScreen.gameObject.SetActive(true);
+					AudioController.Instance.PlayVictoryMusic();
+				} else {
+					_defeatedScreen.gameObject.SetActive(true);
+					AudioController.Instance.PlayDefeatMusic();
+					AudioController.Instance.PlayPlayerDiyingSound();
+				}
+			};
         }
 
         public void GoToMenu()

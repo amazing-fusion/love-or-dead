@@ -142,16 +142,19 @@ namespace com.AmazingFusion.LoveOrDeath
 
         public void PlayCombatMusic()
         {
+			_musicSource.loop = true;
             PlayMusic(_combatMusicClip);
         }
 
         public void PlayVictoryMusic()
         {
+			_musicSource.loop = false;
             PlayMusic(_victoryMusicClip);
         }
 
         public void PlayDefeatMusic()
         {
+			_musicSource.loop = false;
             PlayMusic(_defeatMusicClip);
         }
 
